@@ -6,7 +6,7 @@ import './js/mobileMenu.js';
 
 import './js/about.js';
 
-import './js/products.js';
+import './js/dessertListSection.js';
 
 import './js/feedback.js';
 
