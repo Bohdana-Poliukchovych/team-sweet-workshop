@@ -5,10 +5,6 @@ import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-// 1. СЮДИ МИ ДОДАМО ІМПОРТ БІБЛІОТЕКИ ЗІРОЧОК (коли її встановлять)
-// import StarRating from 'star-rating.js';
-// import 'star-rating.js/dist/star-rating.css'; // Імпорт її стилів
-
 const modalOverlay = document.querySelector('#productModalOverlay');
 
 const closeButton = modalOverlay?.querySelector('.CloseButton');
@@ -20,6 +16,7 @@ const orderButton = modalOverlay?.querySelector('.OrderButton');
  */
 
 export async function openProductModal(target, triggerButton = null) {
+  console.clear();
   if (!modalOverlay) return;
 
   if (typeof target === 'string' || typeof target === 'number') {
@@ -32,18 +29,17 @@ export async function openProductModal(target, triggerButton = null) {
     }
 
     try {
-      const response = await axios.get(`/desserts/${target}`);
-      fillModalFields(response.data);
+      const data = await getDessertById(target);
+      fillModalFields(data);
     } catch (error) {
-      console.error('Помилка Axios:', error);
+      console.error('Помилка завантаження:', error);
 
       iziToast.error({
         title: 'Упс!',
-        message: 'Не вдалося завантажити дані про десерт. Спробуйте пізніше.',
+        message: 'Не вдалося завантажити дані. Спробуйте пізніше.',
         position: 'topRight',
         timeout: 4000,
       });
-
       return;
     } finally {
       if (triggerButton) {
@@ -53,8 +49,6 @@ export async function openProductModal(target, triggerButton = null) {
     }
   } else if (typeof target === 'object' && target !== null) {
     fillModalFields(target);
-  } else {
-    return;
   }
 
   modalOverlay.classList.remove('is-hidden');
@@ -106,25 +100,28 @@ function onOrderSubmit() {
 function fillModalFields(data) {
   if (!data || !modalOverlay) return;
 
+  console.log('Full dessert object:', data);
+
   modalOverlay.querySelector('.ProductTitle').textContent =
     data.name || 'Десерт';
   modalOverlay.querySelector('.ProductPrice').textContent = data.price
     ? `${data.price} грн`
     : '';
 
-  // ==========================================================================
-  // 2. ОДИН РЯДОК ДЛЯ ЗІРОЧОК ТУТ:
-  // ==========================================================================
   const ratingContainer = modalOverlay.querySelector('#productRatingContainer');
   if (ratingContainer) {
     ratingContainer.innerHTML = '';
 
-    // Викликаємо бібліотеку (код підлаштовується під ту, яку ви оберете):
-    // new StarRating(ratingContainer, { value: data.rating || 5, readOnly: true });
-
-    console.log(`Рейтинг ${data.rating} успішно передано в бібліотеку зірочок`);
+    // Ініціалізація Raty
+    // Зверни увагу: Raty часто потребує передачі елемента, а не просто виклику
+    const ratyInstance = new Raty(ratingContainer, {
+      score: data.rating || 0,
+      readOnly: true,
+      starType: 'img',
+      // Якщо зірки не з'являються, можливо, потрібно вказати шлях до папки 'images'
+      path: '../node_modules/raty-js/src/images',
+    });
   }
-
   const imgElement = modalOverlay.querySelector('.ProductImage');
   if (imgElement) {
     imgElement.src = data.image || 'https://placehold.co/450x450?text=No+Image';
@@ -134,10 +131,17 @@ function fillModalFields(data) {
   modalOverlay.querySelector('.ProductDescription').textContent =
     data.description || '';
 
-  const ingredientsBlock = modalOverlay.querySelector(
-    '.ProductIngredients strong'
-  );
-  if (ingredientsBlock && ingredientsBlock.nextSibling) {
-    ingredientsBlock.nextSibling.textContent = ` ${data.ingredients || ''}`;
+  const ingredientsBlock = modalOverlay.querySelector('.ProductIngredients');
+  if (ingredientsBlock) {
+    ingredientsBlock.innerHTML = `<strong>Склад:</strong> ${data.composition || 'Інформація відсутня'}`;
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const testBtn = document.querySelector('#test-modal-btn');
+  if (testBtn) {
+    testBtn.addEventListener('click', () => {
+      openProductModal('6852a9fcb459460cb6b47728');
+    });
+  }
+});

@@ -19,6 +19,10 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+.CloseIcon {
+  fill: currentColor;
+}
+
 .CloseButton {
   position: absolute;
   top: 16px;
@@ -67,7 +71,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 32px;
+  gap: 24px;
 }
 
 .ProductTitle {
@@ -77,6 +81,7 @@
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: #080c0c;
+  margin-top: -16px;
 }
 
 .ProductPrice {
@@ -86,6 +91,7 @@
   line-height: 1.4;
   letter-spacing: -0.01em;
   color: #080c0c;
+  margin-top: -16px;
 }
 
 .ProductRating {
@@ -111,10 +117,9 @@
   line-height: 1.5;
   color: #080c0c;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 10px 24px;
-  margin-top: 10px;
+  margin-top: 0px;
+  align-self: center;
   background-color: #f19898;
   border: 1px solid #f19898;
   border-radius: 100px;
@@ -146,6 +151,10 @@
     height: 340px;
     margin: 0 auto;
   }
+
+  .OrderButton {
+    align-self: flex-start;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -157,7 +166,7 @@
   .ModalContent {
     flex-direction: row;
     align-items: center;
-    gap: 48px;
+    gap: 24px;
   }
 
   .ImageThumb {
