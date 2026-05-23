@@ -1,0 +1,38 @@
+<div id="productModalOverlay" class="backdrop is-hidden">
+  <article class="ProductModal">
+    <button
+      type="button"
+      class="CloseButton"
+      aria-label="Закрити модальне вікно"
+    >
+      <svg class="CloseIcon" width="24" height="24">
+        <use href="/img/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="ModalContent">
+      <div class="ImageThumb">
+        <img
+          class="ProductImage"
+          src="https://placehold.co/450x450?text=Loading..."
+          alt="Завантаження десерту"
+        />
+      </div>
+
+      <div class="ProductInfo">
+        <h2 class="ProductTitle">Шоколадний фондан</h2>
+        <span class="ProductPrice">120 грн</span>
+
+        <div class="ProductRating" id="productRatingContainer"></div>
+        <p class="ProductDescription">
+          Класичний десерт з рідким шоколадним центром.
+        </p>
+
+        <p class="ProductIngredients">
+          <strong>Склад:</strong> Шоколад, яйця, цукор, масло, борошно.
+        </p>
+
+        <button type="button" class="OrderButton">Перейти до замовлення</button>
+      </div>
+    </div>
+  </article>
+</div>

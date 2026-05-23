@@ -1,0 +1,168 @@
+.backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.ProductModal {
+  font-family: 'Work Sans', sans-serif;
+  position: relative;
+  background: #f5fdfd;
+  border-radius: 16px;
+  padding: 64px 20px;
+  width: 100%;
+  max-width: 335px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.CloseButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  color: #080c0c;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.CloseButton:hover,
+.CloseButton:focus {
+  color: #f19898;
+  outline: none;
+}
+
+.CloseButton:active {
+  color: #c07979;
+  outline: none;
+}
+
+.ModalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.ImageThumb {
+  width: 100%;
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.ProductImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ProductInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.ProductTitle {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #080c0c;
+}
+
+.ProductPrice {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #080c0c;
+}
+
+.ProductRating {
+  display: flex;
+  gap: 8px;
+}
+
+.ProductDescription,
+.ProductIngredients {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #080c0c;
+}
+
+.ProductIngredients strong {
+  font-weight: 700;
+}
+
+.OrderButton {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #080c0c;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  margin-top: 10px;
+  background-color: #f19898;
+  border: 1px solid #f19898;
+  border-radius: 100px;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.OrderButton:hover,
+.OrderButton:focus {
+  background-color: #f19898;
+  border: 2px solid #080c0c;
+  outline: none;
+}
+
+.OrderButton:active {
+  background-color: #c07979;
+  border-color: #080c0c;
+}
+
+@media only screen and (min-width: 768px) {
+  .ProductModal {
+    padding: 64px 32px;
+    max-width: 704px;
+  }
+
+  .ImageThumb {
+    max-width: 640px;
+    height: 340px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .ProductModal {
+    padding: 64px;
+    max-width: 1000px;
+  }
+
+  .ModalContent {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .ImageThumb {
+    flex: 0 0 450px;
+    height: 450px;
+    max-width: 450px;
+  }
+}
