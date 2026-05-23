@@ -7,23 +7,24 @@
     background-size: cover;
     background-position: center;
 
-    padding: 120px 0;
+    padding: 115.5px 0;
 
     text-align: center;
     color: #ffffff;
 }
 
 .hero-title {
-    font-size: 48px;
-    font-weight: 500;
-    line-height: 1.1;
-
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    max-width:335px;
+    height: 192px;
     margin-bottom: 24px;
 }
 
 .hero-text {
-    max-width: 600px;
-
+    max-width: 335px;
+    font-weight: 400;
     margin: 0 auto 32px;
 
     font-size: 18px;
@@ -31,23 +32,27 @@
 }
 
 .hero-btn {
-    display: inline-block;
-
-    padding: 16px 32px;
-
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 335px;
+    height: 44px;
     border-radius: 100px;
-
-    background-color: #f6c6c6;
-
+    background-color: #F19898;
+    padding: 10px 24px;
     color: #2f2f2f;
     text-decoration: none;
+
 
     transition: background-color 250ms ease;
 }
 
 .hero-btn:hover,
 .hero-btn:focus {
-    background-color: #e8b1b1;
+    background-color: #F19898;
 }
 
 .hero {
@@ -58,7 +63,7 @@
     background-size: cover;
     background-position: center;
 
-    padding: 120px 0;
+    padding: 115.5px 0;
 
     text-align: center;
     color: #ffffff;
@@ -88,7 +93,7 @@
 
     border-radius: 100px;
 
-    background-color: #f6c6c6;
+    background-color: #F19898;
 
     color: #2f2f2f;
     text-decoration: none;
@@ -98,7 +103,7 @@
 
 .hero-btn:hover,
 .hero-btn:focus {
-    background-color: #e8b1b1;
+    background-color: #F19898;
 }
 
 @media screen and (min-width: 768px) {
