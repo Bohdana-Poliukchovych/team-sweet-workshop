@@ -1,0 +1,145 @@
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)),
+        url('../img/hero/pie-mobile.jpg');
+
+    background-size: cover;
+    background-position: center;
+
+    padding: 120px 0;
+
+    text-align: center;
+    color: #ffffff;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1.1;
+
+    margin-bottom: 24px;
+}
+
+.hero-text {
+    max-width: 600px;
+
+    margin: 0 auto 32px;
+
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.hero-btn {
+    display: inline-block;
+
+    padding: 16px 32px;
+
+    border-radius: 100px;
+
+    background-color: #f6c6c6;
+
+    color: #2f2f2f;
+    text-decoration: none;
+
+    transition: background-color 250ms ease;
+}
+
+.hero-btn:hover,
+.hero-btn:focus {
+    background-color: #e8b1b1;
+}
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)),
+        url('../img/hero/pie-mobile@2x.jpg');
+
+    background-size: cover;
+    background-position: center;
+
+    padding: 120px 0;
+
+    text-align: center;
+    color: #ffffff;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1.1;
+
+    margin-bottom: 24px;
+}
+
+.hero-text {
+    max-width: 600px;
+
+    margin: 0 auto 32px;
+
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.hero-btn {
+    display: inline-block;
+
+    padding: 16px 32px;
+
+    border-radius: 100px;
+
+    background-color: #f6c6c6;
+
+    color: #2f2f2f;
+    text-decoration: none;
+
+    transition: background-color 250ms ease;
+}
+
+.hero-btn:hover,
+.hero-btn:focus {
+    background-color: #e8b1b1;
+}
+
+@media screen and (min-width: 768px) {
+    .hero {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.45),
+                rgba(0, 0, 0, 0.45)),
+            url('../img/hero/pie-tablet.jpg');
+    }
+}
+
+@media screen and (min-width: 768px) and (min-resolution: 2dppx) {
+    .hero {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.45),
+                rgba(0, 0, 0, 0.45)),
+            url('../img/hero/pie-tablet@2x.jpg');
+    }
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width: 1440px) {
+    .hero {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.45),
+                rgba(0, 0, 0, 0.45)),
+            url('../img/hero/pie-desktop.jpg');
+    }
+}
+
+@media screen and (min-width: 1440px) and (min-resolution: 2dppx) {
+    .hero {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.45),
+                rgba(0, 0, 0, 0.45)),
+            url('../img/hero/pie-desktop@2x.jpg');
+    }
+}
