@@ -116,12 +116,12 @@
     }
 
     .hero-title {
-        max-width: 720px;
+        max-width: 768px;
         font-size: 72px;
     }
 
     .hero-text {
-        max-width: 720px;
+        max-width: 768px;
         font-size: 20px;
     }
 }
