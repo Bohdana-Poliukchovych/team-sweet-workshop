@@ -1,14 +1,17 @@
 import { getDessertById } from './services/api.js';
-import Raty from 'raty-js';
 
 import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { openOrderModal } from './orderModal.js';
 
 const modalOverlay = document.querySelector('#productModalOverlay');
 
 const closeButton = modalOverlay?.querySelector('.CloseButton');
 const orderButton = modalOverlay?.querySelector('.OrderButton');
+
+let currentProductId = null;
+let originalButtonText = '';
 
 /**
  *@param {string|number|Object} target
@@ -20,7 +23,7 @@ export async function openProductModal(target, triggerButton = null) {
   if (!modalOverlay) return;
 
   if (typeof target === 'string' || typeof target === 'number') {
-    let originalButtonText = '';
+    currentProductId = target;
 
     if (triggerButton) {
       originalButtonText = triggerButton.textContent;
@@ -48,6 +51,7 @@ export async function openProductModal(target, triggerButton = null) {
       }
     }
   } else if (typeof target === 'object' && target !== null) {
+    currentProductId = target._id;
     fillModalFields(target);
   }
 
@@ -94,13 +98,16 @@ function onEscKeyPress(event) {
 
 function onOrderSubmit() {
   closeProductModal();
-  console.log('Відкриваємо форму замовлення колеги...');
+
+  if (currentProductId) {
+    openOrderModal(currentProductId);
+  } else {
+    console.warn('ID десерту не знайдено!');
+  }
 }
 
 function fillModalFields(data) {
   if (!data || !modalOverlay) return;
-
-  console.log('Full dessert object:', data);
 
   modalOverlay.querySelector('.ProductTitle').textContent =
     data.name || 'Десерт';
@@ -110,18 +117,21 @@ function fillModalFields(data) {
 
   const ratingContainer = modalOverlay.querySelector('#productRatingContainer');
   if (ratingContainer) {
-    ratingContainer.innerHTML = '';
+    const rate = data.rate || 0;
+    let starsHtml = '';
 
-    // Ініціалізація Raty
-    // Зверни увагу: Raty часто потребує передачі елемента, а не просто виклику
-    const ratyInstance = new Raty(ratingContainer, {
-      score: data.rating || 0,
-      readOnly: true,
-      starType: 'img',
-      // Якщо зірки не з'являються, можливо, потрібно вказати шлях до папки 'images'
-      path: '../node_modules/raty-js/src/images',
-    });
+    for (let i = 1; i <= 5; i++) {
+      let state = '';
+      if (i <= Math.floor(rate)) {
+        state = 'is-active full';
+      } else if (i <= Math.ceil(rate)) {
+        state = 'is-active half';
+      }
+      starsHtml += `<span class="star-item ${state}">★</span>`;
+    }
+    ratingContainer.innerHTML = `<div class="stars-wrapper">${starsHtml}</div>`;
   }
+
   const imgElement = modalOverlay.querySelector('.ProductImage');
   if (imgElement) {
     imgElement.src = data.image || 'https://placehold.co/450x450?text=No+Image';
@@ -130,18 +140,8 @@ function fillModalFields(data) {
 
   modalOverlay.querySelector('.ProductDescription').textContent =
     data.description || '';
-
   const ingredientsBlock = modalOverlay.querySelector('.ProductIngredients');
   if (ingredientsBlock) {
     ingredientsBlock.innerHTML = `<strong>Склад:</strong> ${data.composition || 'Інформація відсутня'}`;
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const testBtn = document.querySelector('#test-modal-btn');
-  if (testBtn) {
-    testBtn.addEventListener('click', () => {
-      openProductModal('6852a9fcb459460cb6b47728');
-    });
-  }
-});

@@ -12,9 +12,8 @@
   background: #f5fdfd;
   border-radius: 16px;
   padding: 64px 20px;
-  width: 100%;
-  max-width: 335px;
   max-height: 90vh;
+  max-width: 335px;
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
@@ -27,24 +26,37 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  background: transparent;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
-  padding: 4px;
+  background-color: transparent;
   color: #080c0c;
+  cursor: pointer;
+  padding: 0;
   transition:
-    color 0.2s ease,
-    transform 0.2s ease;
+    background-color 0.2s ease,
+    transform 0.1s ease;
 }
 
-.CloseButton:hover,
+.CloseButton:hover {
+  background-color: #f19898;
+  border: 1px solid #080c0c;
+}
+
 .CloseButton:focus {
-  color: #f19898;
   outline: none;
+  background-color: #f5fdfd;
+  border: 1px solid #080c0c;
 }
 
 .CloseButton:active {
-  color: #c07979;
-  outline: none;
+  background-color: #c07979;
+  border: 1px solid #080c0c;
+  transform: scale(0.95);
 }
 
 .ModalContent {
@@ -65,6 +77,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .ProductInfo {
@@ -112,32 +125,35 @@
 }
 
 .OrderButton {
+  justify-content: center;
+  display: inline-flex;
+  align-self: center;
+  width: 295px;
+  padding: 10px 24px;
+  border-radius: 100px;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   color: #080c0c;
-  display: inline-flex;
-  padding: 10px 24px;
-  margin-top: 0px;
-  align-self: center;
   background-color: #f19898;
   border: 1px solid #f19898;
-  border-radius: 100px;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
+  transition: all 0.4s easy;
 }
 
-.OrderButton:hover,
+.OrderButton:hover {
+  border: 1px solid #080c0c;
+  background-color: #f5fdfd;
+}
+
 .OrderButton:focus {
   background-color: #f19898;
   border: 2px solid #080c0c;
-  outline: none;
 }
 
 .OrderButton:active {
   background-color: #c07979;
-  border-color: #080c0c;
+  border: 1px solid #080c0c;
+  transform: scale(0.98);
 }
 
 @media only screen and (min-width: 768px) {
@@ -147,31 +163,61 @@
   }
 
   .ImageThumb {
-    max-width: 640px;
-    height: 340px;
-    margin: 0 auto;
+    height: 480px;
   }
 
   .OrderButton {
     align-self: flex-start;
+    width: 310px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .ProductModal {
     padding: 64px;
-    max-width: 1000px;
+    max-width: 1184px;
   }
 
   .ModalContent {
-    flex-direction: row;
     align-items: center;
-    gap: 24px;
+    flex-direction: row;
+    padding-bottom: 48px;
   }
 
   .ImageThumb {
-    flex: 0 0 450px;
-    height: 450px;
-    max-width: 450px;
+    height: 435px;
+    max-width: 580px;
   }
+}
+
+.stars-wrapper {
+  display: flex;
+  gap: 1px;
+}
+
+.star-item {
+  display: inline-block;
+  position: relative;
+  font-size: 24px;
+  color: #d9d9d9;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+}
+
+.star-item.is-active::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  left: 0;
+  color: #080c0c;
+}
+
+.star-item.is-active.full::before {
+  width: 100%;
+}
+
+.star-item.is-active.half::before {
+  width: 50%;
+  overflow: hidden;
 }
