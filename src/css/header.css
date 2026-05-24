@@ -1,10 +1,12 @@
 .header {
   padding: 20px 0;
 }
+/*
 .nav {
   display: flex;
-  justify-content: space-between;
-}
+  flex: 1;
+  justify-content: center;
+}*/
 .nav-logo {
   display: inline-flex;
   align-items: center;
@@ -13,7 +15,7 @@
 .nav-list {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 40px;
 }
 .nav-link {
@@ -42,3 +44,76 @@
 .nav-link.active::after {
   background: #747bff;
 }
+
+/*Mobile first*/
+.header-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px 20px 20px;
+}
+
+.nav {
+  display: none;
+}
+.header-shop-btn {
+  display: none;
+}
+.burger-btn {
+  display: block;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+/*Laptop*/
+@media screen and (min-width: 768px) {
+  .burger-btn {
+    display: none;
+  }
+  .header-box {
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  }
+  .nav {
+    display: flex;
+    flex: 1; 
+    justify-content: center;
+  }
+  .nav-list {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  }
+  .nav-item {
+    white-space: nowrap;
+  }
+  .header-shop-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f19898;
+    color: #080c0c;
+    padding: 8px 20px;
+    border: 1px solid #f19898;
+    border-radius: 100px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 250ms ease,
+    border 250ms ease;
+    width: 133px;
+    height: 40px;
+  }
+  .header-shop-btn:hover,
+  .header-shop-btn:focus {
+    background-color: #fff;
+    border: 2px solid #080c0c; 
+  }
+  }
