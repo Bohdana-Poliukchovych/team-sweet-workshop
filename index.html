@@ -14,24 +14,34 @@
     <script type="module" crossorigin src="/team-sweet-workshop/index.js"></script>
     <link rel="modulepreload" crossorigin href="/team-sweet-workshop/assets/vendor-CPerixvl.js">
     <link rel="stylesheet" crossorigin href="/team-sweet-workshop/assets/vendor-BRku08SW.css">
-    <link rel="stylesheet" crossorigin href="/team-sweet-workshop/assets/index-CUX4EUKL.css">
+    <link rel="stylesheet" crossorigin href="/team-sweet-workshop/assets/index-Co4ZVg74.css">
   </head>
   <body>
     <header class="header">
   <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="{=$icon-path}"></use>
-        </svg>
+    <div class="header-box">
+      <a href="./index.html" class="nav-logo" aria-label="Site logo">
+          <svg class="nav-logo-icon" width="144" height="32">
+            <use href="/team-sweet-workshop/assets/sprite-BTBG9uDS.svg#icon-logo"></use>
+          </svg>
       </a>
-      <ul class="nav-list">
-        <li class="nav-item"></li>
-        <li class="nav-item"></li>
-      </ul>
-    </nav>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#dessert-list" class="nav-link">Солодощі</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">Про нас</a></li>
+          <li class="nav-item"><a href="#feedback-reviews" class="nav-link">Відгуки</a></li>
+          <li class="nav-item"><a href="#questions" class="nav-link">Часті питання</a></li>
+        </ul>
+        <a href="#shop-section" class="header-shop-btn">До покупок</a>
+      </nav>
+      <button type="button" class="burger-btn">
+        <svg class="burger-icon" width="24" height="24">
+          <use href="/team-sweet-workshop/assets/sprite-BTBG9uDS.svg#icon-menu"></use>
+        </svg>
+      </button>
+    </div>
   </div>
-</header>
+
 
     
 
@@ -50,7 +60,42 @@
   </div>
 </section>
 
-      
+      <section class="dessert-list-section" id="dessert-list">
+  <div class="dessert-list-container">
+    <div class="dessert-list-head">
+      <div class="dessert-list-copy">
+        <p class="dessert-list-title">Солодощі</p>
+        <p class="dessert-list-text">
+          Спробуйте наші смачні десерти, які вас здивують!
+        </p>
+      </div>
+
+      <div class="dessert-select-wrap">
+        <select
+          class="dessert-category-select"
+          name="dessert-category"
+          aria-label="Всі десерти"
+        >
+          <option value="">Всі десерти</option>
+        </select>
+      </div>
+    </div>
+
+    <fieldset class="dessert-category-fieldset">
+      <legend class="visually-hidden">Категорії десертів</legend>
+      <div class="dessert-category-list" data-category-list></div>
+    </fieldset>
+
+    <ul class="dessert-cards-list" data-dessert-list></ul>
+
+    <p class="dessert-list-message" data-dessert-message hidden></p>
+
+    <button class="dessert-load-more" type="button" data-load-more hidden>
+      Завантажити ще
+    </button>
+  </div>
+</section>
+
       
       <section class="faq-section container" id="questions">
   <h2 class="faq-title">Часті питання</h2>
@@ -337,7 +382,45 @@
   </div>
 </footer>
 
-    
+    <div id="productModalOverlay" class="backdrop is-hidden">
+  <article class="ProductModal">
+    <button
+      type="button"
+      class="CloseButton"
+      aria-label="Закрити модальне вікно"
+    >
+      <svg class="CloseIcon" width="24" height="24">
+        <use href="/team-sweet-workshop/assets/sprite-BTBG9uDS.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="ModalContent">
+      <div class="ImageThumb">
+        <img
+          class="ProductImage"
+          src="https://placehold.co/450x450?text=Loading..."
+          alt="Завантаження десерту"
+        />
+      </div>
+
+      <div class="ProductInfo">
+        <h2 class="ProductTitle">Шоколадний фондан</h2>
+        <span class="ProductPrice">120 грн</span>
+
+        <div class="ProductRating" id="productRatingContainer"></div>
+        <p class="ProductDescription">
+          Класичний десерт з рідким шоколадним центром.
+        </p>
+
+        <p class="ProductIngredients">
+          <strong>Склад:</strong> Шоколад, яйця, цукор, масло, борошно.
+        </p>
+
+        <button type="button" class="OrderButton">Перейти до замовлення</button>
+      </div>
+    </div>
+  </article>
+</div>
+
     <style>@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Work+Sans:wght@400;500&display=swap');
 
 body.modal-open {
