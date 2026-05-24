@@ -29,8 +29,8 @@ function setDessertId(id) {
   }
 }
 
-function openOrderModal(id) {
-  setDessertId(id);
+export function openOrderModal(productId) {
+  setDessertId(productId);
   backdrop?.classList.add('is-open');
   lockScroll();
 }
