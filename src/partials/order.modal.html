@@ -1,32 +1,64 @@
-<form class="order-form">
-  <button class="close-btn">
-    <svg width="24" height="24" aria-hidden="true">
-      <use href="./img/sprite.svg#icon-close"></use>
-    </svg>
-  </button>
-  <label class="form-label">
-    Ім’я*
-    <input type="text" name="name" class="form-input" placeholder="Вікторія" />
-  </label>
+<style>
+  @import url('./css/order.css');
+</style>
 
-  <label class="form-label">
-    Телефон*
-    <input
-      type="tel"
-      name="phone"
-      class="form-input"
-      placeholder="38 0__ _______"
-    />
-  </label>
+<div class="order-backdrop is-open">
+  <form class="order-form" id="order-form">
+    <button class="close-btn" type="button" aria-label="Закрити модальне вікно">
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 14 14"
+        fill="none"
+        aria-hidden="true"
+      >
+        <use href="./img/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
+    <h2 class="order-title">Оформлення замовлення</h2>
 
-  <label class="form-label">
-    Коментар*
-    <textarea
-      name="comment"
-      class="form-textarea"
-      placeholder="Ваш коментар"
-    ></textarea>
-  </label>
+    <label class="form-label">
+      Ім’я*
+      <input
+        type="text"
+        name="name"
+        class="form-input"
+        placeholder="Вікторія"
+        required
+        pattern="^[\p{L}' \-]+$"
+        title="Використовуйте лише літери, пробіли, апостроф і дефіс"
+      />
+      <p class="invalid-text">Error text</p>
+    </label>
 
-  <button type="submit">Надіслати заявку</button>
-</form>
+    <label class="form-label">
+      Телефон*
+      <input
+        type="tel"
+        name="phone"
+        class="form-input"
+        placeholder="38 0__ _______"
+        required
+        pattern="^(?:[0-9]|\+|\(|\)| )+$"
+        title="Використовуйте лише цифри та символи +, (, ), пробіли"
+      />
+      <p class="invalid-text">Error text</p>
+    </label>
+
+    <label class="form-label">
+      Коментар*
+      <textarea
+        name="comment"
+        class="form-textarea"
+        placeholder="Ваш коментар"
+        required
+        minlength="5"
+        maxlength="300"
+        title="Мінімум 5 символів. Дозволені: літери, цифри, пробіли і знаки . , ! ? ; : ( ) '"
+      ></textarea>
+      <p class="invalid-text invalid-text--comment">Error text</p>
+    </label>
+
+    <button type="submit" class="order-submit-btn">Надіслати заявку</button>
+  </form>
+</div>
