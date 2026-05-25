@@ -1,0 +1,35 @@
+<section class="dessert-list-section" id="dessert-list">
+  <div class="dessert-list-container">
+    <div class="dessert-list-head">
+      <div class="dessert-list-copy">
+        <p class="dessert-list-title">Солодощі</p>
+        <p class="dessert-list-text">
+          Спробуйте наші смачні десерти, які вас здивують!
+        </p>
+      </div>
+
+      <div class="dessert-select-wrap">
+        <select
+          class="dessert-category-select"
+          name="dessert-category"
+          aria-label="Всі десерти"
+        >
+          <option value="">Всі десерти</option>
+        </select>
+      </div>
+    </div>
+
+    <fieldset class="dessert-category-fieldset">
+      <legend class="visually-hidden">Категорії десертів</legend>
+      <div class="dessert-category-list" data-category-list></div>
+    </fieldset>
+
+    <ul class="dessert-cards-list" data-dessert-list></ul>
+
+    <p class="dessert-list-message" data-dessert-message hidden></p>
+
+    <button class="dessert-load-more" type="button" data-load-more hidden>
+      Завантажити ще
+    </button>
+  </div>
+</section>

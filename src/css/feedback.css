@@ -29,9 +29,6 @@
   width: 100%;
   height: 100%;
 }
-.swiper-wrapper {
-  max-width: 335px;
-}
 .review-card {
   border: 2px solid #080c0c;
   border-radius: 16px;
@@ -67,15 +64,18 @@
   height: 48px;
   background-color: #f5fdfd;
   outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition:
     background-color 250ms ease,
     border-color 250ms ease,
     opacity 250ms ease;
 }
-/* .svg-arrow {
-  fill: none;
+.svg-arrow {
+  fill: #080c0c;
   stroke: #080c0c;
-} */
+}
 .reviews-controls {
   margin-top: 32px;
   display: flex;
@@ -99,7 +99,10 @@
 .reviews-next.swiper-button-disabled,
 .reviews-prev.swiper-button-disabled {
   background-color: #f5fdfd;
-  border-color: #080c0c;
+  border-color: rgba(8, 12, 12, 0.15);
+}
+.reviews-next.swiper-button-disabled .svg-arrow,
+.reviews-prev.swiper-button-disabled .svg-arrow {
   opacity: 0.2;
 }
 .swiper-pagination-fraction,
@@ -122,6 +125,47 @@
   .feedback-section-container {
     padding: 0 32px;
   }
+  .reviews-slider-wrapper {
+    position: relative;
+
+    padding-bottom: 48px;
+  }
+  .reviews-swiper-box {
+    position: relative;
+  }
+  .swiper .swiper-slide {
+    width: 218px;
+  }
+  .swiper-pagination-fraction,
+  .swiper-pagination-custom,
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    position: absolute;
+    bottom: 0 !important ;
+    left: 50% !important;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+  }
+  .reviews-buttons {
+    position: absolute;
+    top: calc(50% - 24px);
+    left: 0;
+    width: 100%;
+    z-index: 10;
+
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  .reviews-next {
+    transform: translateX(-50%);
+  }
+  .reviews-prev {
+    transform: translateX(50%);
+  }
 }
 /*  Styles for Desktop devices */
 @media only screen and (min-width: 1440px) {
@@ -130,5 +174,11 @@
   }
   .feedback-section-container {
     padding: 0 64px;
+  }
+  .feedback-paragraph {
+    margin-bottom: 80px;
+  }
+  .swiper .swiper-slide {
+    min-width: 357px !important;
   }
 }

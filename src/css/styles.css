@@ -20,6 +20,7 @@
 @import url('./order.css');
 @import url('./dessert-modal.css');
 @import url('./footer.css');
+@import url('./mobile-menu.css');
 
 .backdrop {
   position: fixed;
