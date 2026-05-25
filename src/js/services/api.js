@@ -7,8 +7,8 @@ export async function getDesserts(params = {}) {
     return data;
 }
 
-export async function gerDessertById(id) {
-    const { data } = await axios.get(`$BASE_URL/desserts/${id}`);
+export async function getDessertById(id) {
+    const { data } = await axios.get(`${BASE_URL}/desserts/${id}`);
     return data;
 }
 

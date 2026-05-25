@@ -1,12 +1,13 @@
 /*  Styles for Mobile devices */
 .feedback-section {
   padding: 64px 0;
+  background-color: #f5fdfd;
 }
 .feedback-section-container {
   padding: 0 20px;
 }
 .title-feedback {
-  font-family: var(--second-family);
+  font-family: 'Comfortaa', sans-serif;
   font-weight: 700;
   font-size: 36px;
   line-height: 120%;
@@ -16,7 +17,7 @@
   margin-bottom: 24px;
 }
 .feedback-paragraph {
-  font-family: var(--font-family);
+  font-family: 'Work Sans', sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 150%;
@@ -28,13 +29,93 @@
   width: 100%;
   height: 100%;
 }
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #444;
+.swiper-wrapper {
+  max-width: 335px;
+}
+.review-card {
+  border: 2px solid #080c0c;
+  border-radius: 16px;
+  padding: 32px;
+
+  min-height: 288px;
+}
+.swiper .swiper-slide {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+}
+.review-paragraph {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: #080c0c;
+}
+.review-author {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  color: #080c0c;
+  margin-top: auto;
+}
+.reviews-next,
+.reviews-prev {
+  border: 2px solid #080c0c;
+  border-radius: 100px;
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+  background-color: #f5fdfd;
+  outline: none;
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    opacity 250ms ease;
+}
+/* .svg-arrow {
+  fill: none;
+  stroke: #080c0c;
+} */
+.reviews-controls {
+  margin-top: 32px;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+.reviews-buttons {
+  display: flex;
+  gap: 16px;
+}
+.reviews-next:hover,
+.reviews-next:focus,
+.reviews-prev:hover,
+.reviews-prev:focus {
+  background-color: #f19898;
+}
+.reviews-next:active,
+.reviews-prev:active {
+  background-color: #c07979;
+}
+.reviews-next.swiper-button-disabled,
+.reviews-prev.swiper-button-disabled {
+  background-color: #f5fdfd;
+  border-color: #080c0c;
+  opacity: 0.2;
+}
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  position: static;
+  display: flex;
+}
+.swiper-pagination-bullet {
+  background-color: #080c0c;
+}
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-horizontal.swiper-pagination-bullets
+  .swiper-pagination-bullet-active {
+  background-color: #080c0c;
 }
 /*  Styles for Tablet devices */
 @media only screen and (min-width: 768px) {

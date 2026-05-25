@@ -1,4 +1,4 @@
-<section class="feedback-section">
+<section class="feedback-section" id="feedback-reviews">
   <div class="container feedback-section-container">
     <h2 class="title-feedback">Відгуки клієнтів</h2>
     <p class="feedback-paragraph">
@@ -6,9 +6,21 @@
     </p>
     <div class="swiper reviews-swiper">
       <div class="swiper-wrapper"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
+      <div class="reviews-controls">
+        <div class="swiper-pagination"></div>
+        <div class="reviews-buttons">
+          <button class="reviews-next" type="button">
+            <svg class="svg-arrow" width="24" height="24">
+              <use xlink:href="/src/img/sprite.svg#icon-arrow_back"></use>
+            </svg>
+          </button>
+          <button class="reviews-prev" type="button">
+            <svg class="svg-arrow" width="24" height="24">
+              <use xlink:href="/src/img/sprite.svg#icon-arrow_forward"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
