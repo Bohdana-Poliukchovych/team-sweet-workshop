@@ -2,6 +2,7 @@ import Swiper from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
+import raterFunction from 'rater-js';
 
 import { getFeedbacks } from './services/api.js';
 const swiperWrapperEl = document.querySelector('.swiper-wrapper');
@@ -22,13 +23,14 @@ function renderMarkup(reviews) {
     .map(
       ({ rate, description, author }) => `
     <div class="swiper-slide review-card">
-    <div data-score="${rate}"></div>
+    <div id="rater" data-rate="${rate}"></div>
     <p class="review-paragraph">${description}</p>
     <p class="review-author">${author}</p>
     </div> `
     )
     .join('');
   swiperWrapperEl.innerHTML = markup;
+  initRating();
 }
 function initSwiper() {
   const swiper = new Swiper('.reviews-swiper', {
@@ -51,5 +53,17 @@ function initSwiper() {
     },
     mousewheel: true,
     keyboard: true,
+  });
+}
+function initRating() {
+  const ratings = document.querySelectorAll('#rater');
+  ratings.forEach(el => {
+    raterFunction({
+      element: el,
+      rating: Number(el.dataset.rate),
+      readOnly: true,
+      starSize: 24,
+      step: 0.5,
+    });
   });
 }
