@@ -9,8 +9,6 @@
 @import url('./base.css');
 @import url('./container.css');
 
-
-
 /* Sections style */
 @import url('./header.css');
 @import url('./hero.css');
@@ -22,7 +20,7 @@
 @import url('./order.css');
 @import url('./dessert-modal.css');
 @import url('./footer.css');
-
+@import url('./mobile-menu.css');
 
 .backdrop {
   position: fixed;
@@ -34,7 +32,9 @@
 
   opacity: 1;
   visibility: visible;
-  transition: opacity 250ms ease, visibility 250ms ease;
+  transition:
+    opacity 250ms ease,
+    visibility 250ms ease;
 }
 
 .backdrop.is-hidden {

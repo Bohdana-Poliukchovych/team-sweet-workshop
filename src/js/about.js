@@ -5,7 +5,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 if (window.innerWidth >= 768) {
-  new Swiper('.about-swiper', {
+  const swiperInstance = new Swiper('.about-swiper', {
     modules: [Navigation, Pagination],
     slidesPerView: 2,
     spaceBetween: 24,

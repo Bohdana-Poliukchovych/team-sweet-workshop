@@ -29,8 +29,8 @@ function setDessertId(id) {
   }
 }
 
-export function openOrderModal(id) {
-  setDessertId(id);
+export function openOrderModal(productId) {
+  setDessertId(productId);
   backdrop?.classList.add('is-open');
   lockScroll();
 }
@@ -59,6 +59,13 @@ function validateComment() {
       "Мінімум 5 символів: літери, цифри, пробіли і знаки . , ! ? ; : ( ) '"
     );
   }
+}
+
+function normalizePhoneForApi(rawPhone) {
+  const compact = String(rawPhone || '')
+    .trim()
+    .replace(/[\s()\-]/g, '');
+  return compact.startsWith('+') ? compact.slice(1) : compact;
 }
 
 closeBtn?.addEventListener('click', closeOrderModal);
@@ -116,7 +123,7 @@ form?.addEventListener('submit', async event => {
   const { name, phone, comment } = form.elements;
   const payload = {
     name: name.value.trim(),
-    phone: phone.value.trim(),
+    phone: normalizePhoneForApi(phone.value),
     comment: comment.value.trim(),
     dessertId,
   };
