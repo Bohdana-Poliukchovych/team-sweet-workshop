@@ -13,7 +13,7 @@ const orderButton = modalOverlay?.querySelector('.OrderButton');
 
 let currentProductId = null;
 let originalButtonText = '';
-let raterInstance = null; // Зберігатимемо посилання на наш рейтинг
+let raterInstance = null;
 
 /**
  *@param {string|number|Object} target
