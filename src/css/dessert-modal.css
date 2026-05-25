@@ -1,0 +1,223 @@
+.backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.ProductModal {
+  font-family: 'Work Sans', sans-serif;
+  position: relative;
+  background: #f5fdfd;
+  border-radius: 16px;
+  padding: 64px 20px;
+  max-height: 90vh;
+  max-width: 335px;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.CloseIcon {
+  fill: currentColor;
+}
+
+.CloseButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  color: #080c0c;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.CloseButton:hover {
+  background-color: #f19898;
+  border: 1px solid #080c0c;
+}
+
+.CloseButton:focus {
+  outline: none;
+  background-color: #f5fdfd;
+  border: 1px solid #080c0c;
+}
+
+.CloseButton:active {
+  background-color: #c07979;
+  border: 1px solid #080c0c;
+  transform: scale(0.95);
+}
+
+.ModalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.ImageThumb {
+  width: 100%;
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.ProductImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ProductInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.ProductTitle {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #080c0c;
+  margin-top: -16px;
+}
+
+.ProductPrice {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #080c0c;
+  margin-top: -16px;
+}
+
+.ProductRating {
+  display: flex;
+  gap: 8px;
+}
+
+.ProductDescription,
+.ProductIngredients {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #080c0c;
+}
+
+.ProductIngredients strong {
+  font-weight: 700;
+}
+
+.OrderButton {
+  justify-content: center;
+  display: inline-flex;
+  align-self: center;
+  width: 295px;
+  padding: 10px 24px;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #080c0c;
+  background-color: #f19898;
+  border: 1px solid #f19898;
+  transition: all 0.4s easy;
+}
+
+.OrderButton:hover {
+  border: 1px solid #080c0c;
+  background-color: #f5fdfd;
+}
+
+.OrderButton:focus {
+  background-color: #f19898;
+  border: 2px solid #080c0c;
+}
+
+.OrderButton:active {
+  background-color: #c07979;
+  border: 1px solid #080c0c;
+  transform: scale(0.98);
+}
+
+@media only screen and (min-width: 768px) {
+  .ProductModal {
+    padding: 64px 32px;
+    max-width: 704px;
+  }
+
+  .ImageThumb {
+    height: 480px;
+  }
+
+  .OrderButton {
+    align-self: flex-start;
+    width: 310px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .ProductModal {
+    padding: 64px;
+    max-width: 1184px;
+  }
+
+  .ModalContent {
+    align-items: center;
+    flex-direction: row;
+    padding-bottom: 48px;
+  }
+
+  .ImageThumb {
+    height: 435px;
+    max-width: 580px;
+  }
+}
+
+.stars-wrapper {
+  display: flex;
+  gap: 1px;
+}
+
+.star-item {
+  display: inline-block;
+  position: relative;
+  font-size: 24px;
+  color: #d9d9d9;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+}
+
+.star-item.is-active::before {
+  content: '★';
+  position: absolute;
+  left: 0;
+  left: 0;
+  color: #080c0c;
+}
+
+.star-item.is-active.full::before {
+  width: 100%;
+}
+
+.star-item.is-active.half::before {
+  width: 50%;
+  overflow: hidden;
+}
