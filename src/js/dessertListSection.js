@@ -1,4 +1,5 @@
 import { getCategories, getDesserts } from './services/api.js';
+import { openProductModal } from './dessertModal.js';
 
 const PAGE_LIMIT = 8;
 const ALL_CATEGORY = '';
