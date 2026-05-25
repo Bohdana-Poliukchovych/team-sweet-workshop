@@ -34,6 +34,9 @@ img {
 button {
   cursor: pointer;
   font-family: inherit;
+  border: none;
+  background-color: transparent;
+  padding: 0;
 }
 
 a {
