@@ -1,0 +1,129 @@
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #f5fdfd;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(100%);
+  transition: 300ms ease-in;
+  transition-property: transform;
+}
+.mobile-menu.is-open {
+  transform: translateX(0);
+}
+.js-open-mobile-menu {
+  /* на бургер */
+}
+.js-mobile-menu {
+}
+.js-logo-mobile-menu {
+}
+.js-close-mobile-menu {
+}
+.js-link-mobile-menu-dessert {
+}
+.js-link-mobile-menu-about {
+}
+.js-link-mobile-menu-feedback {
+}
+.js-link-mobile-menu-questions {
+}
+
+.mobile-menu-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 72px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.mobile-menu-logo-link {
+  display: block;
+  border-bottom: 1px solid transparent;
+}
+.mobile-menu-logo-link:hover,
+.mobile-menu-logo-link:focus {
+  outline: none;
+  border-bottom-color: #080c0c;
+}
+.mobile-menu-logo-svg {
+  display: block;
+  width: 100%;
+}
+
+.mobile-menu-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: #080c0c;
+  stroke-width: 1px;
+  stroke: #080c0c;
+  transition-property: stroke;
+  width: 48px;
+  height: 48px;
+}
+.mobile-menu-close-svg {
+}
+
+.mobile-menu-list {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+.mobile-menu-items {
+}
+.mobile-menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 4px;
+  border-bottom: 1px solid transparent;
+  padding: 12px 0px;
+  max-width: 335px;
+  height: 48px;
+}
+.mobile-menu-link:hover,
+.mobile-menu-link:focus {
+  outline: none;
+  border-bottom-color: #080c0c;
+}
+.mobile-menu-link:active {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #f19898;
+}
+.mobile-menu-shopping-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+  border: 1px solid #f19898;
+  border-radius: 100px;
+  padding: 8px 20px;
+  max-width: 335px;
+  width: 100%;
+  height: 40px;
+  background-color: #f19898;
+  font-weight: 500;
+  color: #080c0c;
+  margin: 0 auto;
+}
+.mobile-menu-shopping-btn:hover,
+.mobile-menu-shopping-btn:focus {
+  border: 2px solid #080c0c;
+  background-color: #fff;
+}
+.mobile-menu-shopping-btn:active {
+  background-color: #f5b6b6;
+}
