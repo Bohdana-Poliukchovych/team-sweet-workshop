@@ -76,7 +76,8 @@
 .dessert-card {
   display: flex;
   flex-direction: column;
-  min-width: 312px;
+  width: 100%;
+  min-width: 0;
   padding: 16px;
   border: 1px solid #080c0c;
   border-radius: 16px;
@@ -139,20 +140,15 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-width: 335px;
-  min-height: 42px;
-  margin: 28px auto 0;
-  padding: 12px 24px;
+  margin: 40px auto 80px;
+  padding: 10px 30px;
   border: 0;
   border-radius: 999px;
   color: #080c0c;
   background-color: #f28b8b;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1;
-  transition:
-    background-color 250ms ease,
-    opacity 250ms ease;
+  line-height: 1.5;
 }
 @media only screen and (min-width: 768px) {
   .dessert-cards-list {
@@ -183,7 +179,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px 28px;
+    gap: 32px;
     margin-bottom: 40px;
   }
   .dessert-category-label {
@@ -204,21 +200,16 @@
     clip-path: inset(100%);
   }
   .dessert-category-name {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 112px;
-    min-height: 40px;
-    padding: 10px 22px;
-    border: 2px solid #080c0c;
-    border-radius: 999px;
-    font-size: 14px;
     font-weight: 500;
-    line-height: 1;
-    text-align: center;
-    transition:
-      background-color 250ms ease,
-      border-color 250ms ease;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #080c0c;
+    border: 2px solid #080c0c;
+    border-radius: 100px;
+    padding: 10px 24px;
+  }
+  .dessert-category-input:checked + .dessert-category-name {
+    background-color: #f28b8b;
   }
   .dessert-cards-list {
     grid-template-columns: repeat(4, 2fr);
