@@ -1,6 +1,7 @@
 .dessert-list-section {
-  padding: 64px 20px;
-  /*background-color: #f5fdfd;*/
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
   font-family: 'Work Sans', sans-serif;
 }
 .visually-hidden {
@@ -16,7 +17,7 @@
   clip-path: inset(100%);
 }
 .dessert-list-container {
-  position: relative;
+  max-width: 1321px;
 }
 .dessert-list-head {
   display: flex;
@@ -33,7 +34,6 @@
   font-family: 'Comfortaa', sans-serif;
 }
 .dessert-list-text {
-  /*max-width: 310px;*/
   font-weight: 400;
   margin: 0 auto;
   font-size: 18px;
@@ -83,10 +83,8 @@
 }
 .dessert-card-img {
   width: 100%;
-  /*aspect-ratio: 311 / 196;*/
-  /*object-fit: cover;*/
+
   border-radius: 8px;
-  /*background-color: #dce9e9;*/
 }
 .dessert-card-category {
   font-weight: 400;
@@ -130,12 +128,10 @@
   background-color: transparent;
   border: 2px solid #080c0c;
   border-radius: 100px;
-  /*transition: background-color 250ms ease;*/
 }
 .dessert-card-icon {
   width: 24px;
   height: 24px;
-  /*fill: currentColor;*/
 }
 .dessert-load-more {
   display: flex;
@@ -158,18 +154,15 @@
     opacity 250ms ease;
 }
 @media only screen and (min-width: 768px) {
-  .dessert-list-section {
-    padding: 44px 0;
-  }
   .dessert-cards-list {
     grid-template-columns: repeat(2, 2fr);
     gap: 20px;
   }
+  .dessert-list-container {
+    max-width: 1280px;
+  }
 }
 @media only screen and (min-width: 1440px) {
-  .dessert-list-section {
-    padding: 80px 80px;
-  }
   .dessert-list-text {
     font-family: 'Work Sans', sans-serif;
     max-width: none;
