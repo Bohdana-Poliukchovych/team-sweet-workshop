@@ -19,6 +19,7 @@ if (window.innerWidth >= 768) {
     pagination: {
       el: '.about-pagination',
       clickable: true,
+      dynamicBullets: false,
     },
 
     breakpoints: {
