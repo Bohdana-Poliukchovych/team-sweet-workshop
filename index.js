@@ -39,5 +39,5 @@ import{a as L,i as S,S as W,N as U,P as J,r as Q,A as X}from"./assets/vendor-Cyb
     <div id="rater" data-rate="${s}"></div>
     <p class="review-paragraph">${d}</p>
     <p class="review-author">${n}</p>
-    </div> `).join("");F.innerHTML=t,Pe()}function Ae(){new W(".reviews-swiper",{modules:[U,J],slidesPerView:1,breakpoints:{768:{slidesPerView:"auto"}},spaceBetween:24,navigation:{nextEl:".reviews-prev",prevEl:".reviews-next"},pagination:{el:".swiper-pagination",type:"bullets",clickable:!0},mousewheel:!0,keyboard:!0})}function Pe(){document.querySelectorAll("#rater").forEach(t=>{Q({element:t,rating:Number(t.dataset.rate),readOnly:!0,starSize:24,step:.5})})}new X(".accordion-container",{duration:400,showMultiple:!1,onlyChildNodes:!1});
+    </div> `).join("");F.innerHTML=t,Pe()}function Ae(){new W(".reviews-swiper",{modules:[U,J],slidesPerView:1,breakpoints:{768:{slidesPerView:"auto"}},spaceBetween:24,navigation:{nextEl:".reviews-prev",prevEl:".reviews-next"},pagination:{el:".swiper-pagination",type:"bullets",clickable:!0},mousewheel:!0,keyboard:!0})}function Pe(){document.querySelectorAll("#rater").forEach(t=>{Q({element:t,rating:Number(t.dataset.rate)||0,readOnly:!0,starSize:20,step:.5})})}new X(".accordion-container",{duration:400,showMultiple:!1,onlyChildNodes:!1});
 //# sourceMappingURL=index.js.map
