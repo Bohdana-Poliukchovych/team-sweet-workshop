@@ -64,7 +64,6 @@ function initRating() {
       readOnly: true,
       starSize: 20,
       step: 0.5,
-      starGap: 4,
     });
   });
 }
