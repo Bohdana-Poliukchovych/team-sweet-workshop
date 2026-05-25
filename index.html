@@ -14,7 +14,7 @@
     <script type="module" crossorigin src="/team-sweet-workshop/index.js"></script>
     <link rel="modulepreload" crossorigin href="/team-sweet-workshop/assets/vendor-CybdgMdr.js">
     <link rel="stylesheet" crossorigin href="/team-sweet-workshop/assets/vendor-CJgcHDqp.css">
-    <link rel="stylesheet" crossorigin href="/team-sweet-workshop/assets/index-D9FE5Pwh.css">
+    <link rel="stylesheet" crossorigin href="/team-sweet-workshop/assets/index-Cjeej7SJ.css">
   </head>
   <body>
     <header class="header">
@@ -520,10 +520,10 @@ body.modal-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   padding: 0;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   border-radius: 50%;
   background: transparent;
   color: #080c0c;
@@ -546,28 +546,18 @@ body.modal-open {
   border-color: #080c0c;
 }
 
+.close-btn:disabled {
+  border: 1px solid #f19898;
+  background: #f19898;
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 .close-btn svg {
-  display: none;
-}
-
-.close-btn::before,
-.close-btn::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 14px;
-  height: 2px;
-  border-radius: 2px;
-  background-color: #080c0c;
-}
-
-.close-btn::before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.close-btn::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
 }
 
 .invalid-text {
@@ -754,13 +744,7 @@ body.modal-open {
 <div class="order-backdrop">
   <form class="order-form" id="order-form">
     <button class="close-btn" type="button" aria-label="Закрити модальне вікно">
-      <svg
-        width="14"
-        height="14"
-        viewBox="0 0 14 14"
-        fill="none"
-        aria-hidden="true"
-      >
+      <svg width="24" height="24" fill="currentColor" aria-hidden="true">
         <use href="/team-sweet-workshop/assets/sprite-BTBG9uDS.svg#icon-close"></use>
       </svg>
     </button>
