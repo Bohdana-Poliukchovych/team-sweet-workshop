@@ -5,7 +5,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import raterFunction from 'rater-js';
 
 import { getFeedbacks } from './services/api.js';
-const swiperWrapperEl = document.querySelector('.swiper-wrapper');
+const swiperWrapperEl = document.querySelector('.reviews-swiper .swiper-wrapper');
 // document.addEventListener('DOMContentLoaded', initReviewsSection);
 initReviewsSection();
 async function initReviewsSection() {
