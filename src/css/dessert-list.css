@@ -1,0 +1,238 @@
+.dessert-list-section {
+  padding: 64px 20px;
+  /*background-color: #f5fdfd;*/
+  font-family: 'Work Sans', sans-serif;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(100%);
+}
+.dessert-list-container {
+  position: relative;
+}
+.dessert-list-head {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.dessert-list-title {
+  margin: 0 0 24px;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  font-family: 'Comfortaa', sans-serif;
+}
+.dessert-list-text {
+  /*max-width: 310px;*/
+  font-weight: 400;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+}
+.dessert-select-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 16px;
+  border: 2px;
+  border-radius: 6px;
+}
+.dessert-category-select {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  color: #080c0c;
+  background-color: transparent;
+  border: 2px solid #080c0c;
+  border-radius: 6px;
+  outline: transparent;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.dessert-category-fieldset {
+  display: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.dessert-cards-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+.dessert-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 312px;
+  padding: 16px;
+  border: 1px solid #080c0c;
+  border-radius: 16px;
+  /*background-color: #f5fdfd;*/
+}
+.dessert-card-img {
+  width: 100%;
+  /*aspect-ratio: 311 / 196;*/
+  /*object-fit: cover;*/
+  border-radius: 8px;
+  /*background-color: #dce9e9;*/
+}
+.dessert-card-category {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 16px 0 12px;
+}
+.dessert-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+.dessert-card-description {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.dessert-card-price {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.dessert-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+.dessert-card-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /*flex-shrink: 0;*/
+  width: 44px;
+  height: 44px;
+  padding: 10;
+  color: #080c0c;
+  background-color: transparent;
+  border: 2px solid #080c0c;
+  border-radius: 100px;
+  /*transition: background-color 250ms ease;*/
+}
+.dessert-card-icon {
+  width: 24px;
+  height: 24px;
+  /*fill: currentColor;*/
+}
+.dessert-load-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 335px;
+  min-height: 42px;
+  margin: 28px auto 0;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 999px;
+  color: #080c0c;
+  background-color: #f28b8b;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  transition:
+    background-color 250ms ease,
+    opacity 250ms ease;
+}
+@media only screen and (min-width: 768px) {
+  .dessert-list-section {
+    padding: 44px 0;
+  }
+  .dessert-cards-list {
+    grid-template-columns: repeat(2, 2fr);
+    gap: 20px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .dessert-list-section {
+    padding: 80px 80px;
+  }
+  .dessert-list-text {
+    font-family: 'Work Sans', sans-serif;
+    max-width: none;
+    margin: 0;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .dessert-select-wrap {
+    display: none;
+  }
+  .dessert-category-fieldset {
+    display: block;
+  }
+  .dessert-category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 28px;
+    margin-bottom: 40px;
+  }
+  .dessert-category-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dessert-category-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+  }
+  .dessert-category-name {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 112px;
+    min-height: 40px;
+    padding: 10px 22px;
+    border: 2px solid #080c0c;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    transition:
+      background-color 250ms ease,
+      border-color 250ms ease;
+  }
+  .dessert-cards-list {
+    grid-template-columns: repeat(4, 2fr);
+    gap: 40px 24px;
+  }
+
+  .dessert-card {
+    min-height: 420px;
+    padding: 14px;
+  }
+}
