@@ -71,6 +71,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 32px;
+  margin: 0 auto;
 }
 .dessert-card {
   display: flex;
