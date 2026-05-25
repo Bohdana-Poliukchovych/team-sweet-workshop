@@ -1,4 +1,5 @@
 import { getCategories, getDesserts } from './services/api.js';
+import { openProductModal } from './dessertModal.js';
 
 const PAGE_LIMIT = 8;
 const ALL_CATEGORY = '';
@@ -61,6 +62,14 @@ function bindEvents() {
   refs.radioList?.addEventListener('change', onRadioCategoryChange);
   refs.select?.addEventListener('change', onSelectCategoryChange);
   refs.loadMoreBtn?.addEventListener('click', onLoadMore);
+  refs.dessertList?.addEventListener('click', onDessertClick);
+}
+
+function onDessertClick(event) {
+  const btn = event.target.closest('.dessert-card-more');
+  if (!btn) return;
+  const id = btn.dataset.id;
+  openProductModal(id);
 }
 
 function prepareCategories(categories) {
@@ -229,6 +238,7 @@ function createDessertCardMarkup(dessert) {
         <button
           class="dessert-card-more"
           type="button"
+          data-id="${dessert._id}"
           aria-label="${escapeAttr(dessert.name)}"
         >
           <svg class="dessert-card-icon" aria-hidden="true">
