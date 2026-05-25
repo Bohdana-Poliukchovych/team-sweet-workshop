@@ -59,6 +59,13 @@
   transform: scale(0.95);
 }
 
+.CloseButton:disabled {
+  border: 1px solid #f19898;
+  background: #f19898;
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 .ModalContent {
   display: flex;
   flex-direction: column;
@@ -154,6 +161,13 @@
   background-color: #c07979;
   border: 1px solid #080c0c;
   transform: scale(0.98);
+}
+
+.OrderButton:disabled {
+  border: 1px solid #f19898;
+  background: #f19898;
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 @media only screen and (min-width: 768px) {
