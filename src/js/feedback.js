@@ -60,9 +60,9 @@ function initRating() {
   ratings.forEach(el => {
     raterFunction({
       element: el,
-      rating: Number(el.dataset.rate),
+      rating: Number(el.dataset.rate) || 0,
       readOnly: true,
-      starSize: 24,
+      starSize: 20,
       step: 0.5,
     });
   });
