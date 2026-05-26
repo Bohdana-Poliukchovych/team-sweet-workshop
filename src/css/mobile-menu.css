@@ -15,24 +15,9 @@
 .mobile-menu.is-open {
   transform: translateX(0);
 }
-.js-open-mobile-menu {
-  /* на бургер */
+.no-scroll {
+  overflow: hidden;
 }
-.js-mobile-menu {
-}
-.js-logo-mobile-menu {
-}
-.js-close-mobile-menu {
-}
-.js-link-mobile-menu-dessert {
-}
-.js-link-mobile-menu-about {
-}
-.js-link-mobile-menu-feedback {
-}
-.js-link-mobile-menu-questions {
-}
-
 .mobile-menu-wrap {
   display: flex;
   align-items: center;
@@ -66,10 +51,18 @@
   transition-property: stroke;
   width: 48px;
   height: 48px;
+  transition: 50ms ease-in;
 }
-.mobile-menu-close-svg {
+.mobile-menu-close-btn:hover,
+.mobile-menu-close-btn:focus {
+  outline: none;
+  border: 2px solid #080c0c;
+  background-color: #f19898;
+  border-radius: 100%;
 }
-
+.mobile-menu-close-btn:active {
+  background: #c07979;
+}
 .mobile-menu-list {
   display: flex;
   align-items: flex-start;
@@ -77,8 +70,6 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: 36px;
-}
-.mobile-menu-items {
 }
 .mobile-menu-link {
   display: flex;
