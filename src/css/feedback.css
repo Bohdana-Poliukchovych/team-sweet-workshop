@@ -25,18 +25,18 @@
   color: #080c0c;
   margin-bottom: 40px;
 }
-.swiper {
+.feedback-section .swiper {
   width: 100%;
   height: 100%;
 }
-.review-card {
+.feedback-section .review-card {
   border: 2px solid #080c0c;
   border-radius: 16px;
   padding: 32px;
 
   min-height: 288px;
 }
-.swiper .swiper-slide {
+.feedback-section .swiper .swiper-slide {
   display: flex;
   flex-direction: column;
 }
@@ -141,15 +141,15 @@
   .feedback-section-container {
     padding: 0 32px;
   }
-  .reviews-slider-wrapper {
+  .feedback-section .reviews-slider-wrapper {
     position: relative;
 
     padding-bottom: 48px;
   }
-  .reviews-swiper-box {
+  .feedback-section .reviews-swiper-box {
     position: relative;
   }
-  .swiper .swiper-slide {
+  .feedback-section .swiper .swiper-slide {
     width: 218px;
   }
   .feedback-section .swiper-pagination-fraction,
@@ -194,7 +194,7 @@
   .feedback-paragraph {
     margin-bottom: 80px;
   }
-  .swiper .swiper-slide {
+  .feedback-section .swiper .swiper-slide {
     width: 421px;
   }
 }
