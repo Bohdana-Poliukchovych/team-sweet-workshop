@@ -241,7 +241,7 @@ function createDessertCardMarkup(dessert) {
           data-id="${dessert._id}"
           aria-label="${escapeAttr(dessert.name)}"
         >
-          <svg class="dessert-card-icon" aria-hidden="true">
+          <svg class="dessert-card-icon" aria-hidden="true"  width="24" height="24">
             <use href="./img/sprite.svg#icon-arrow_outward"></use>
           </svg>
         </button>
