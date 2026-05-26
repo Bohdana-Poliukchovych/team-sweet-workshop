@@ -1,5 +1,4 @@
 import { getCategories, getDesserts } from './services/api.js';
-import spriteUrl from '../img/sprite.svg?url';
 import { openProductModal } from './dessertModal.js';
 
 const PAGE_LIMIT = 8;
@@ -242,8 +241,8 @@ function createDessertCardMarkup(dessert) {
           data-id="${dessert._id}"
           aria-label="${escapeAttr(dessert.name)}"
         >
-          <svg class="dessert-card-icon" aria-hidden="true">
-            <use href="${spriteUrl}#icon-arrow_outward"></use>
+          <svg class="dessert-card-icon" aria-hidden="true"  width="24" height="24">
+            <use href="./img/sprite.svg#icon-arrow_outward"></use>
           </svg>
         </button>
       </div>
