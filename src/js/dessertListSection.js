@@ -2,6 +2,7 @@ import { getCategories, getDesserts } from './services/api.js';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { openProductModal } from './dessertModal.js';
+import spriteUrl from '../img/sprite.svg?url';
 
 const PAGE_LIMIT = 8;
 
@@ -275,7 +276,7 @@ function createCardButton(id, name) {
         height="24"
         aria-hidden="true"
       >
-        <use href="./img/sprite.svg#icon-arrow-outward"></use>
+        <use href="${spriteUrl}#icon-arrow-outward"></use>
       </svg>
     </button>
   `;
