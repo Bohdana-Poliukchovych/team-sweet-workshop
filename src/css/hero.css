@@ -19,8 +19,8 @@
 }
 
 .hero-title {
-    max-width: 335px;
-    margin-bottom: 20px;
+    
+    margin-bottom: 24px;
 
     font-family: 'Comfortaa', sans-serif;
     font-weight: 700;
@@ -33,7 +33,7 @@
 }
 
 .hero-text {
-    margin-bottom: 24px;
+    margin-bottom: 32px;
 
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
@@ -82,19 +82,19 @@
     }
 
     .hero-title {
-        max-width: 704px;
+        
         margin: 0 auto 24px;
-        font-size: 40px;
+        
     }
 
     .hero-text {
-        max-width: 704px;
+        
         margin: 0 auto 32px;
         font-size: 18px;
     }
 
     .hero-link {
-        max-width: 250px;
+        max-width: 219px;
         margin: 0 auto;
     }
 }
