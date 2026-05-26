@@ -19,8 +19,8 @@
 }
 
 .hero-title {
-    max-width: 335px;
-    margin-bottom: 20px;
+    
+    margin-bottom: 24px;
 
     font-family: 'Comfortaa', sans-serif;
     font-weight: 700;
@@ -33,18 +33,19 @@
 }
 
 .hero-text {
-    margin-bottom: 24px;
+    margin-bottom: 32px;
 
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5;
     text-align: center;
 
     color: #ffffff;
 }
 
-.hero-link {
+
+.hero-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,6 +64,18 @@
     line-height: 1.5;
 
     color: #080c0c;
+    cursor: pointer;
+
+    transition:
+        background-color 250ms ease,
+        border-color 250ms ease,
+        color 250ms ease;
+}
+
+.hero-btn:hover,
+.hero-btn:focus {
+    background-color: #e27f7f;
+    border-color: #e27f7f;
 }
 
 @media screen and (min-width: 768px) {
@@ -82,21 +95,21 @@
     }
 
     .hero-title {
-        max-width: 704px;
+        
         margin: 0 auto 24px;
-        font-size: 56px;
+        
     }
 
     .hero-text {
-        max-width: 704px;
+        
         margin: 0 auto 32px;
         font-size: 18px;
     }
 
-    .hero-link {
-        max-width: 250px;
-        margin: 0 auto;
-    }
+   .hero-btn {
+       max-width: 219px;
+       margin: 0 auto;
+   }
 }
 
 @media screen and (min-width: 1440px) {
@@ -105,7 +118,7 @@
     }
 
     .hero-wrapper {
-        max-width: 1312px;
+        max-width: 1440px;
         min-height: 735px;
         padding: 220px 64px;
 
@@ -123,5 +136,9 @@
     .hero-text {
         max-width: 768px;
         font-size: 20px;
+    }
+
+    .hero-btn {
+        max-width: 215px;
     }
 }

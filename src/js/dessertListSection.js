@@ -1,11 +1,18 @@
 import { getCategories, getDesserts } from './services/api.js';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 import { openProductModal } from './dessertModal.js';
+import spriteUrl from '../img/sprite.svg?url';
 
 const PAGE_LIMIT = 8;
-const ALL_CATEGORY = '';
-const ALL_CATEGORY_NAME = 'Всі десерти';
+
+const ALL_CATEGORY = {
+  _id: '',
+  name: 'Всі десерти',
+};
+
 const CATEGORY_ORDER = [
-  ALL_CATEGORY_NAME,
+  'Всі десерти',
   'Італійські десерти',
   'Гарячі десерти',
   'Заварні тістечка',
@@ -24,151 +31,70 @@ const refs = {
   select: document.querySelector('.dessert-category-select'),
   dessertList: document.querySelector('[data-dessert-list]'),
   loadMoreBtn: document.querySelector('[data-load-more]'),
-  message: document.querySelector('[data-dessert-message]'),
 };
 
 const state = {
-  categories: [{ _id: ALL_CATEGORY, name: ALL_CATEGORY_NAME }],
-  activeCategory: ALL_CATEGORY,
+  categories: [ALL_CATEGORY],
+  activeCategory: '',
   page: 1,
   totalItems: 0,
   isLoading: false,
 };
 
-initDessertList();
+if (refs.section) {
+  init();
+}
 
-async function initDessertList() {
-  if (!refs.section) {
-    return;
-  }
-
+async function init() {
   bindEvents();
-  setLoading(true);
 
-  try {
-    const categories = await getCategories();
-    state.categories = prepareCategories(categories);
-    renderCategories();
-    await loadDesserts({ replace: true });
-  } catch (error) {
-    showMessage('Не вдалося завантажити десерти. Спробуйте оновити сторінку.');
-    console.error(error);
-  } finally {
-    setLoading(false);
-  }
+  await withLoading(async () => {
+    try {
+      const categories = await getCategories();
+
+      state.categories = prepareCategories(categories);
+
+      renderCategories();
+
+      await loadDesserts({ replace: true });
+    } catch (error) {
+      showError('Не вдалося завантажити десерти. Спробуйте оновити сторінку.');
+
+      console.error(error);
+    }
+  });
 }
 
 function bindEvents() {
-  refs.radioList?.addEventListener('change', onRadioCategoryChange);
-  refs.select?.addEventListener('change', onSelectCategoryChange);
+  refs.radioList?.addEventListener('change', onCategoryChange);
+  refs.select?.addEventListener('change', onCategoryChange);
+
   refs.loadMoreBtn?.addEventListener('click', onLoadMore);
+
   refs.dessertList?.addEventListener('click', onDessertClick);
 }
 
-function onDessertClick(event) {
-  const btn = event.target.closest('.dessert-card-more');
-  if (!btn) return;
-  const id = btn.dataset.id;
-  openProductModal(id);
-}
+async function onCategoryChange(event) {
+  const categoryId = event.target.value;
 
-function prepareCategories(categories) {
-  const categoryMap = new Map(
-    categories.map(category => [category.name, category])
-  );
-
-  const sortedCategories = CATEGORY_ORDER.slice(1)
-    .map(name => categoryMap.get(name))
-    .filter(Boolean);
-
-  const restCategories = categories.filter(
-    category => !CATEGORY_ORDER.includes(category.name)
-  );
-
-  return [
-    { _id: ALL_CATEGORY, name: ALL_CATEGORY_NAME },
-    ...sortedCategories,
-    ...restCategories,
-  ];
-}
-
-function renderCategories() {
-  refs.radioList.innerHTML = state.categories
-    .map(category => createRadioMarkup(category))
-    .join('');
-
-  refs.select.innerHTML = state.categories
-    .map(category => createOptionMarkup(category))
-    .join('');
-}
-
-function createRadioMarkup({ _id, name }) {
-  const checked = _id === state.activeCategory ? 'checked' : '';
-
-  return `
-    <label class="dessert-category-label">
-      <input
-        class="dessert-category-input"
-        type="radio"
-        name="dessert-category"
-        value="${escapeAttr(_id)}"
-        ${checked}
-      />
-      <span class="dessert-category-name">${escapeHtml(name)}</span>
-    </label>
-  `;
-}
-
-function createOptionMarkup({ _id, name }) {
-  const selected = _id === state.activeCategory ? 'selected' : '';
-
-  return `<option value="${escapeAttr(_id)}" ${selected}>${escapeHtml(
-    name
-  )}</option>`;
-}
-
-async function onRadioCategoryChange(event) {
-  if (!event.target.classList.contains('dessert-category-input')) {
-    return;
-  }
-
-  await changeCategory(event.target.value);
-}
-
-async function onSelectCategoryChange(event) {
-  await changeCategory(event.target.value);
-}
-
-async function changeCategory(categoryId) {
   if (categoryId === state.activeCategory || state.isLoading) {
     return;
   }
 
   state.activeCategory = categoryId;
   state.page = 1;
+
   syncCategoryControls();
-  setLoading(true);
 
-  try {
-    await loadDesserts({ replace: true });
-  } catch (error) {
-    showMessage('Не вдалося завантажити десерти цієї категорії.');
-    console.error(error);
-  } finally {
-    setLoading(false);
-  }
-}
+  await withLoading(async () => {
+    try {
+      await loadDesserts({ replace: true });
+    } catch (error) {
+      showError('Не вдалося завантажити десерти цієї категорії.');
 
-function syncCategoryControls() {
-  const activeRadio = refs.radioList.querySelector(
-    `.dessert-category-input[value="${cssEscape(state.activeCategory)}"]`
-  );
-
-  if (activeRadio) {
-    activeRadio.checked = true;
-  }
-
-  refs.select.value = state.activeCategory;
+      console.error(error);
+    }
+  });
 }
 
 async function onLoadMore() {
@@ -176,38 +102,119 @@ async function onLoadMore() {
     return;
   }
 
-  state.page += 1;
-  setLoading(true);
+  const nextPage = state.page + 1;
+
   setLoadMoreLoading(true);
 
-  try {
-    await loadDesserts({ replace: false });
-  } catch (error) {
-    state.page -= 1;
-    showMessage('Не вдалося завантажити наступні десерти.');
-    console.error(error);
-  } finally {
-    setLoadMoreLoading(false);
-    setLoading(false);
+  await withLoading(async () => {
+    try {
+      const previousPage = state.page;
+
+      state.page = nextPage;
+
+      await loadDesserts({ replace: false });
+
+      state.page = nextPage;
+    } catch (error) {
+      state.page -= 1;
+
+      showError('Не вдалося завантажити наступні десерти.');
+
+      console.error(error);
+    }
+  });
+
+  setLoadMoreLoading(false);
+}
+
+function onDessertClick(event) {
+  const button = event.target.closest('.dessert-card-more');
+
+  if (!button) {
+    return;
   }
+
+  openProductModal(button.dataset.id);
+}
+
+function prepareCategories(categories) {
+  const map = new Map(categories.map(category => [category.name, category]));
+
+  const sorted = CATEGORY_ORDER.slice(1)
+    .map(name => map.get(name))
+    .filter(Boolean);
+
+  const rest = categories.filter(
+    category => !CATEGORY_ORDER.includes(category.name)
+  );
+
+  return [ALL_CATEGORY, ...sorted, ...rest];
+}
+
+function renderCategories() {
+  const radios = [];
+  const options = [];
+
+  for (const category of state.categories) {
+    radios.push(createRadioMarkup(category));
+
+    options.push(createOptionMarkup(category));
+  }
+
+  refs.radioList.innerHTML = radios.join('');
+
+  refs.select.innerHTML = options.join('');
+}
+
+function createRadioMarkup({ _id, name }) {
+  return `
+    <label class="dessert-category-label">
+      <input
+        class="dessert-category-input"
+        type="radio"
+        name="dessert-category"
+        value="${escapeHtml(_id)}"
+        ${isActive(_id) ? 'checked' : ''}
+      />
+
+      <span class="dessert-category-name">
+        ${escapeHtml(name)}
+      </span>
+    </label>
+  `;
+}
+
+function createOptionMarkup({ _id, name }) {
+  return `
+    <option
+      value="${escapeHtml(_id)}"
+      ${isActive(_id) ? 'selected' : ''}
+    >
+      ${escapeHtml(name)}
+    </option>
+  `;
+}
+
+function isActive(id) {
+  return id === state.activeCategory;
 }
 
 async function loadDesserts({ replace }) {
-  const params = {
+  const data = await getDesserts({
     page: state.page,
     limit: PAGE_LIMIT,
-  };
 
-  if (state.activeCategory) {
-    params.category = state.activeCategory;
-  }
+    ...(state.activeCategory && {
+      category: state.activeCategory,
+    }),
+  });
 
-  const data = await getDesserts(params);
-  const desserts = data.desserts || [];
-  state.totalItems = data.totalItems || desserts.length;
+  const desserts = data.desserts ?? [];
+
+  state.totalItems = data.totalItems ?? desserts.length;
 
   if (replace) {
-    refs.dessertList.innerHTML = '';
+    clearDesserts();
   }
 
   refs.dessertList.insertAdjacentHTML(
@@ -216,53 +223,97 @@ async function loadDesserts({ replace }) {
   );
 
   toggleLoadMoreButton();
-  hideMessage();
+
+  hideToasts();
 }
 
 function createDessertCardMarkup(dessert) {
-  const categoryName = dessert.category?.name || 'Десерт';
+  const category = dessert.category?.name ?? 'Десерт';
 
   return `
     <li class="dessert-card">
       <img
         class="dessert-card-img"
-        src="${escapeAttr(dessert.image)}"
-        alt="${escapeAttr(dessert.name)}"
+        src="${escapeHtml(dessert.image)}"
+        alt="${escapeHtml(dessert.name)}"
         loading="lazy"
       />
-      <p class="dessert-card-category">${escapeHtml(categoryName)}</p>
-      <h3 class="dessert-card-title">${escapeHtml(dessert.name)}</h3>
-      <p class="dessert-card-description">${escapeHtml(dessert.description)}</p>
+
+      <p class="dessert-card-category">
+        ${escapeHtml(category)}
+      </p>
+
+      <h3 class="dessert-card-title">
+        ${escapeHtml(dessert.name)}
+      </h3>
+
+      <p class="dessert-card-description">
+        ${escapeHtml(dessert.description)}
+      </p>
+
       <div class="dessert-card-bottom">
-        <p class="dessert-card-price">${escapeHtml(String(dessert.price))} грн</p>
-        <button
-          class="dessert-card-more"
-          type="button"
-          data-id="${dessert._id}"
-          aria-label="${escapeAttr(dessert.name)}"
-        >
-          <svg class="dessert-card-icon" aria-hidden="true"  width="24" height="24">
-            <use href="./img/sprite.svg#icon-arrow_outward"></use>
-          </svg>
-        </button>
+        <p class="dessert-card-price">
+          ${dessert.price} грн
+        </p>
+
+        ${createCardButton(dessert._id, dessert.name)}
       </div>
     </li>
   `;
 }
 
+function createCardButton(id, name) {
+  return `
+    <button
+      class="dessert-card-more"
+      type="button"
+      data-id="${id}"
+      aria-label="${escapeHtml(name)}"
+    >
+      <svg
+        class="dessert-card-icon"
+        width="24"
+        height="24"
+        aria-hidden="true"
+      >
+        <use href="${spriteUrl}#icon-arrow-outward"></use>
+      </svg>
+    </button>
+  `;
+}
+
+function clearDesserts() {
+  refs.dessertList.innerHTML = '';
+}
+
 function toggleLoadMoreButton() {
   const loadedItems = refs.dessertList.children.length;
+
   const hasMore = loadedItems < state.totalItems;
 
   refs.loadMoreBtn.hidden = !hasMore;
+
   refs.loadMoreBtn.disabled = state.isLoading || !hasMore;
+}
+
+function syncCategoryControls() {
+  const radio = refs.radioList.querySelector(
+    `.dessert-category-input[value="${cssEscape(state.activeCategory)}"]`
+  );
+
+  if (radio) {
+    radio.checked = true;
+  }
+
+  refs.select.value = state.activeCategory;
 }
 
 function setLoading(isLoading) {
   state.isLoading = isLoading;
 
-  if (refs.loadMoreBtn) {
+  if (!refs.loadMoreBtn.hidden) {
     refs.loadMoreBtn.disabled = isLoading;
+
     refs.loadMoreBtn.textContent = isLoading
       ? 'Завантаження...'
       : 'Завантажити ще';
@@ -270,18 +321,31 @@ function setLoading(isLoading) {
 }
 
 function setLoadMoreLoading(isLoading) {
-  refs.loadMoreBtn?.classList.toggle('is-loading', isLoading);
-  refs.loadMoreBtn?.setAttribute('aria-busy', String(isLoading));
+  refs.loadMoreBtn.classList.toggle('is-loading', isLoading);
+
+  refs.loadMoreBtn.setAttribute('aria-busy', String(isLoading));
 }
 
-function showMessage(text) {
-  refs.message.textContent = text;
-  refs.message.hidden = false;
+async function withLoading(callback) {
+  setLoading(true);
+
+  try {
+    await callback();
+  } finally {
+    setLoading(false);
+  }
 }
 
-function hideMessage() {
-  refs.message.textContent = '';
-  refs.message.hidden = true;
+function showError(message) {
+  iziToast.error({
+    title: 'Помилка',
+    message,
+    position: 'topRight',
+  });
+}
+
+function hideToasts() {
+  iziToast.destroy();
 }
 
 function escapeHtml(value = '') {
@@ -293,12 +357,8 @@ function escapeHtml(value = '') {
     .replaceAll("'", '&#039;');
 }
 
-function escapeAttr(value = '') {
-  return escapeHtml(value);
-}
-
 function cssEscape(value) {
-  if (window.CSS && CSS.escape) {
+  if (window.CSS?.escape) {
     return CSS.escape(value);
   }
 
