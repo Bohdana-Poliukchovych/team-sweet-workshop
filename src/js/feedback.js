@@ -5,7 +5,9 @@ import { Navigation, Pagination } from 'swiper/modules';
 import raterFunction from 'rater-js';
 
 import { getFeedbacks } from './services/api.js';
-const swiperWrapperEl = document.querySelector('.reviews-swiper .swiper-wrapper');
+const swiperWrapperEl = document.querySelector(
+  '.reviews-swiper .swiper-wrapper'
+);
 // document.addEventListener('DOMContentLoaded', initReviewsSection);
 initReviewsSection();
 async function initReviewsSection() {
@@ -23,7 +25,7 @@ function renderMarkup(reviews) {
     .map(
       ({ rate, description, author }) => `
     <div class="swiper-slide review-card">
-    <div id="rater" data-rate="${rate}"></div>
+    <div class="raterJS" data-rate="${rate}"></div>
     <p class="review-paragraph">${description}</p>
     <p class="review-author">${author}</p>
     </div> `
@@ -43,6 +45,7 @@ function initSwiper() {
     },
     spaceBetween: 24,
     navigation: {
+      //За макетом пункт 104: Клік по кнопкам вліво/вправо повинен виконувати зсув слайду з відгуком у протилежну сторону.
       nextEl: '.reviews-prev',
       prevEl: '.reviews-next',
     },
@@ -56,7 +59,7 @@ function initSwiper() {
   });
 }
 function initRating() {
-  const ratings = document.querySelectorAll('#rater');
+  const ratings = document.querySelectorAll('.raterJS');
   ratings.forEach(el => {
     raterFunction({
       element: el,
