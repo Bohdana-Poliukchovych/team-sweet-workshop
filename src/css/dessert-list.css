@@ -17,7 +17,7 @@
   clip-path: inset(100%);
 }
 .dessert-list-container {
-  max-width: 1321px;
+  max-width: 335px;
 }
 .dessert-list-head {
   display: flex;
@@ -45,22 +45,111 @@
   align-items: center;
   justify-content: flex-start;
   flex-direction: row;
-  gap: 16px;
-  border: 2px;
-  border-radius: 6px;
+  position: relative;
 }
-.dessert-category-select {
-  width: 100%;
-  height: 40px;
-  padding: 8px 12px;
-  color: #080c0c;
-  background-color: transparent;
-  border: 2px solid #080c0c;
+
+.dessert-category-dropdown {
+  /*appearance: none;*/
+  /*-webkit-appearance: none;*/
+  /*-moz-appearance: none;*/
+  border: 2px solid #202424;
   border-radius: 6px;
-  outline: transparent;
+  padding: 8px 12px;
+  max-width: 335px;
+  width: 100%;
+  /*height: 44px;*/
+  background-color: transparent;
+  color: #202424;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  /*transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;*/
+}
+
+.dessert-select-icon {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+  fill: currentColor;
+}
+.dessert-category-dropdown.is-open + .dessert-select-icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+.dessert-category-dropdown.is-open {
+  border-color: #202424;
+  background-color: #ebfcfb;
+}
+
+.dessert-category-dropdown-list {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  max-height: 260px;
+  overflow-y: auto;
+  border: 2px solid #202424;
+  border-radius: 6px;
+  background-color: #ebfcfb;
+  padding: 8px 0;
+  /*margin: 0;*/
+  /*list-style: none;*/
+  /*min-height: 368px;*/
+  scrollbar-color: #603c3c;
+  padding-right: 12px;
+}
+
+.dessert-category-dropdown-item {
+  padding: 12px 12px;
+  color: #2f4847;
+  cursor: pointer;
+  border-radius: 12px;
+  font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
 }
+
+.dessert-category-dropdown-item.is-active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.dessert-category-dropdown-list::-webkit-scrollbar-track {
+  /*background: transparent;*/
+  border-radius: 8px;
+  margin: 12px 18px;
+}
+
+.dessert-category-dropdown-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dessert-category-dropdown-list::-webkit-scrollbar-track {
+  background: #f5b6b6;
+}
+
+.dessert-category-dropdown-list::-webkit-scrollbar-thumb {
+  background-color: #603c3c;
+  border-radius: 8px;
+  width: 8px;
+  /*min-height: 24;*/
+  border: 4px solid transparent;
+  /*background-clip: content-box;*/
+}
+
 .dessert-category-fieldset {
   display: none;
   margin: 0;
@@ -150,29 +239,55 @@
   line-height: 1.5;
 }
 @media only screen and (min-width: 768px) {
+  .dessert-list-head {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    max-height: 105px;
+  }
+  .dessert-list-title {
+    text-align: left;
+  }
+  .dessert-select-wrap {
+    align-items: flex-end;
+    justify-content: flex-end;
+    min-width: 256px;
+    min-height: 40px;
+  }
+  .dessert-category-select {
+    min-width: 256px;
+  }
+  .dessert-list-text {
+    text-align: left;
+  }
   .dessert-cards-list {
     grid-template-columns: repeat(2, 2fr);
     gap: 20px;
   }
   .dessert-list-container {
-    max-width: 1280px;
+    max-width: 704px;
   }
 }
 @media only screen and (min-width: 1440px) {
-  .dessert-list-text {
-    font-family: 'Work Sans', sans-serif;
-    max-width: none;
-    margin: 0;
-    font-weight: 400;
-    font-size: 18px;
-    text-align: center;
+  .dessert-list-container {
+    max-width: 1312px;
   }
-
   .dessert-select-wrap {
     display: none;
   }
   .dessert-category-fieldset {
     display: block;
+  }
+  .dessert-list-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .dessert-list-title {
+    text-align: center;
   }
   .dessert-category-list {
     display: flex;
@@ -197,6 +312,13 @@
     border: 0;
     clip: rect(0 0 0 0);
     clip-path: inset(100%);
+  }
+  .dessert-list-text {
+    font-weight: 400;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
   }
   .dessert-category-name {
     font-weight: 500;
