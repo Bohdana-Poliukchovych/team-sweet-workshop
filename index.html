@@ -14,7 +14,7 @@
     <script type="module" crossorigin src="/team-sweet-workshop/index.js"></script>
     <link rel="modulepreload" crossorigin href="/team-sweet-workshop/assets/vendor-B_nRCiHV.js">
     <link rel="stylesheet" crossorigin href="/team-sweet-workshop/assets/vendor-DyuyvzPB.css">
-    <link rel="stylesheet" crossorigin href="/team-sweet-workshop/assets/index-4kLnlrC5.css">
+    <link rel="stylesheet" crossorigin href="/team-sweet-workshop/assets/index-DzqTJ0wp.css">
   </head>
   <body>
     <header class="header">
@@ -119,13 +119,25 @@
       </div>
 
       <div class="dessert-select-wrap">
-        <select
-          class="dessert-category-select"
-          name="dessert-category"
-          aria-label="Всі десерти"
+        <button
+          class="dessert-category-dropdown"
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
         >
-          <option value="">Всі десерти</option>
-        </select>
+          <span class="dessert-category-dropdown-value">Всі десерти</span>
+        </button>
+
+        <svg
+          class="dessert-select-icon"
+          width="24"
+          height="24"
+          aria-hidden="true"
+        >
+          <use href="/team-sweet-workshop/assets/sprite-Bu-390yt.svg#icon-keyboard-arrow-down"></use>
+        </svg>
+
+        <ul class="dessert-category-dropdown-list" role="listbox" hidden></ul>
       </div>
     </div>
 
