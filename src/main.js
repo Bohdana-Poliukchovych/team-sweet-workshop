@@ -15,3 +15,5 @@ import './js/questions.js';
 import './js/dessertModal.js';
 
 import './js/orderModal.js';
+
+import './js/hero.js';
