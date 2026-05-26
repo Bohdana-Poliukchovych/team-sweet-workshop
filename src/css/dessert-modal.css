@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
   z-index: 1000;
   padding: 20px;
 }
@@ -13,8 +14,10 @@
   border-radius: 16px;
   padding: 64px 20px;
   max-height: 90vh;
+  width: 95%;
   max-width: 335px;
   overflow-y: auto;
+  box-sizing: border-box;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -144,7 +147,8 @@
   color: #080c0c;
   background-color: #f19898;
   border: 1px solid #f19898;
-  transition: all 0.4s easy;
+  cursor: pointer;
+  transition: all 0.4s ease;
 }
 
 .OrderButton:hover {
