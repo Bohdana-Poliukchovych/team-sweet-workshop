@@ -17,10 +17,11 @@ if (window.innerWidth >= 768) {
     },
 
     pagination: {
-      el: '.about-pagination',
-      clickable: true,
-      dynamicBullets: false,
-    },
+  el: '.about-pagination',
+  clickable: true,
+  bulletClass: 'about-pagination-bullet',
+  bulletActiveClass: 'about-pagination-bullet-active',
+},
 
     breakpoints: {
       768: {
