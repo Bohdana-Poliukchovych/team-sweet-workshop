@@ -1,83 +1,3 @@
-// import Swiper from 'swiper';
-// import 'swiper/css';
-// import 'swiper/css/pagination';
-// import { Navigation, Pagination } from 'swiper/modules';
-// import raterFunction from 'rater-js';
-// import iziToast from 'izitoast';
-
-// import { getFeedbacks } from './services/api.js';
-// const swiperWrapperEl = document.querySelector(
-//   '.reviews-swiper .swiper-wrapper'
-// );
-// initReviewsSection();
-// async function initReviewsSection() {
-//   try {
-//     const { feedbacks } = await getFeedbacks(10, 1);
-//     renderMarkup(feedbacks);
-//     initSwiper();
-//   } catch (error) {
-//     console.log(error);
-//     iziToast.error({
-//       title: 'Помилка',
-//       message: 'Сталася помилка',
-//       position: 'topRight',
-//       timeout: 5000,
-//     });
-//   }
-// }
-// function renderMarkup(reviews) {
-//   if (!swiperWrapperEl) return;
-//   const markup = reviews
-//     .map(
-//       ({ rate, description, author }) => `
-//     <div class="swiper-slide review-card">
-//     <div class="raterJS" data-rate="${rate}"></div>
-//     <p class="review-paragraph">${description}</p>
-//     <p class="review-author">${author}</p>
-//     </div> `
-//     )
-//     .join('');
-//   swiperWrapperEl.innerHTML = markup;
-//   initRating();
-// }
-// function initSwiper() {
-//   const swiper = new Swiper('.reviews-swiper', {
-//     modules: [Navigation, Pagination],
-//     slidesPerView: 1,
-//     breakpoints: {
-//       768: {
-//         slidesPerView: 'auto',
-//       },
-//     },
-//     spaceBetween: 24,
-//     navigation: {
-//       //За макетом пункт 104: Клік по кнопкам вліво/вправо повинен виконувати зсув слайду з відгуком у протилежну сторону.
-//       nextEl: '.reviews-prev',
-//       prevEl: '.reviews-next',
-//     },
-//     pagination: {
-//       el: '.swiper-pagination',
-//       type: 'bullets',
-//       clickable: true,
-//       dynamicBullets: true,
-//     },
-//     mousewheel: true,
-//     keyboard: true,
-//   });
-// }
-// function initRating() {
-//   const ratings = document.querySelectorAll('.raterJS');
-//   ratings.forEach(el => {
-//     raterFunction({
-//       element: el,
-//       rating: Number(el.dataset.rate) || 0,
-//       readOnly: true,
-//       starSize: 20,
-//       step: 0.5,
-//     });
-//   });
-// }
-
 import Swiper from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -121,7 +41,6 @@ async function loadReviews() {
     }
     currentPage++;
   } catch (error) {
-    console.log(error);
     iziToast.error({
       title: 'Помилка',
       message: 'Сталася помилка',
