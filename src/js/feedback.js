@@ -70,6 +70,7 @@ function initSwiper() {
   return new Swiper('.reviews-swiper', {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
+    speed: 800,
     breakpoints: {
       768: {
         slidesPerView: 'auto',
