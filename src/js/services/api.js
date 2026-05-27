@@ -17,8 +17,8 @@ export async function getCategories() {
     return data;
 }
 
-export async function getFeedbacks() {
-    const { data } = await axios.get(`${BASE_URL}/feedbacks`);
+export async function getFeedbacks(limit, page) {
+    const { data } = await axios.get(`${BASE_URL}/feedbacks?limit=${limit}&page=${page}`);
     return data;
 }
 
