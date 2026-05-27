@@ -272,17 +272,6 @@ function createRadioMarkup({ _id, name }) {
   `;
 }
 
-function createOptionMarkup({ _id, name }) {
-  return `
-    <option
-      value="${escapeHtml(_id)}"
-      ${isActive(_id) ? 'selected' : ''}
-    >
-      ${escapeHtml(name)}
-    </option>
-  `;
-}
-
 function isActive(id) {
   return id === state.activeCategory;
 }
