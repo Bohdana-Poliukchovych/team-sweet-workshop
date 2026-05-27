@@ -31,7 +31,7 @@ function toggleMenu(event) {
 domSelectors.linkMobileMenu.forEach(link => {
   link.addEventListener('click', closeMenu);
 });
-function closeMenu() {
+function closeMenu(event) {
   domSelectors.mobileMenu.classList.remove('is-open');
   domSelectors.mobileMenuBody.classList.remove('no-scroll');
 }
