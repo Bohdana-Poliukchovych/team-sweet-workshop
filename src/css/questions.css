@@ -52,9 +52,13 @@
 .ac-trigger::after {
   display: none !important;
 }
+.accordion-container .ac .ac-trigger {
+  -webkit-tap-highlight-color: transparent;
+}
 .faq-arrow-icon {
   transition: transform 0.3s ease;
 }
+
 .ac-panel {
   overflow: hidden;
 }

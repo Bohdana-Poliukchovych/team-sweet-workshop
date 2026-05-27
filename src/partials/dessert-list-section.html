@@ -9,13 +9,25 @@
       </div>
 
       <div class="dessert-select-wrap">
-        <select
-          class="dessert-category-select"
-          name="dessert-category"
-          aria-label="Всі десерти"
+        <button
+          class="dessert-category-dropdown"
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
         >
-          <option value="">Всі десерти</option>
-        </select>
+          <span class="dessert-category-dropdown-value">Всі десерти</span>
+        </button>
+
+        <svg
+          class="dessert-select-icon"
+          width="24"
+          height="24"
+          aria-hidden="true"
+        >
+          <use href="./img/sprite.svg#icon-keyboard-arrow-down"></use>
+        </svg>
+
+        <ul class="dessert-category-dropdown-list" role="listbox" hidden></ul>
       </div>
     </div>
 
