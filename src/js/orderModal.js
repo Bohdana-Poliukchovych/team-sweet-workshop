@@ -65,7 +65,13 @@ function normalizePhoneForApi(rawPhone) {
   const compact = String(rawPhone || '')
     .trim()
     .replace(/[\s()\-]/g, '');
-  return compact.startsWith('+') ? compact.slice(1) : compact;
+  const digits = compact.startsWith('+') ? compact.slice(1) : compact;
+
+  if (/^0\d{9}$/.test(digits)) {
+    return `38${digits}`;
+  }
+
+  return digits;
 }
 
 closeBtn?.addEventListener('click', closeOrderModal);

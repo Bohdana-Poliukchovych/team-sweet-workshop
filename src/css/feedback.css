@@ -85,6 +85,7 @@
 .reviews-buttons {
   display: flex;
   gap: 16px;
+  margin-left: auto;
 }
 .reviews-next:hover,
 .reviews-next:focus,
@@ -106,40 +107,54 @@
   opacity: 0.2;
 }
 
-.feedback-section .swiper-pagination-fraction,
-.feedback-section .swiper-pagination-custom,
-.feedback-section .swiper-horizontal > .swiper-pagination-bullets,
-.feedback-section .swiper-pagination-bullets.swiper-pagination-horizontal {
-  position: static;
-  display: flex;
-  gap: 9px;
+.feedback-section .swiper-pagination {
+  position: relative;
+  left: 25% !important;
+  bottom: -1px !important;
+  transform: translateX(-50%);
 }
 .feedback-section .swiper-pagination-bullet {
-  background-color: #080c0c;
+  width: 8px;
+  height: 8px;
+  margin: 0 !important;
+  background-color: #9f9f9f;
+  opacity: 1;
+  border-radius: 50%;
+  display: inline-block;
   transition: tranform 250ms ease;
 }
 .feedback-section .swiper-pagination-bullet:hover {
-  transform: scale(1.15);
+  transform: scale(1.15) !important;
 }
-.feedback-section .swiper-horizontal > .swiper-pagination-bullets,
-.feedback-section
-  .swiper-pagination-horizontal.swiper-pagination-bullets
-  .swiper-pagination-bullet-active {
+.feedback-section .swiper-pagination-bullet-active-prev,
+.feedback-section .swiper-pagination-bullet-active-next,
+.feedback-section .swiper-pagination-bullet-active-prev-prev,
+.feedback-section .swiper-pagination-bullet-active-next-next {
+  transform: scale(1) !important;
+}
+.feedback-section .swiper-pagination-bullet-active {
   background-color: #080c0c;
+}
+.feedback-section .swiper-pagination-horizontal .swiper-pagination-bullet {
+  margin: 0 9px !important;
+}
+.feedback-section .swiper-pagination-vertical .swiper-pagination-bullet {
+  margin: 0 9px !important;
 }
 .raterJS {
   margin-bottom: 24px;
-}
-
-.feedback-section .star-rating .star-value {
-  background-size: 20px !important;
-  background-repeat: repeat-x !important;
+  width: 120px !important;
+  height: 20px !important;
 }
 .feedback-section .star-rating {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23080c0c' stroke-width='2'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E") !important;
+  background-size: 24px 20px !important;
+  background-repeat: repeat-x !important;
 }
 .feedback-section .star-rating .star-value {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23080c0c'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E") !important;
+  background-size: 24px 20px !important;
+  background-repeat: repeat-x !important;
 }
 /*  Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
@@ -157,18 +172,12 @@
   .feedback-section .swiper .swiper-slide {
     width: 218px;
   }
-  .feedback-section .swiper-pagination-fraction,
-  .feedback-section .swiper-pagination-custom,
-  .feedback-section .swiper-horizontal > .swiper-pagination-bullets,
-  .feedback-section .swiper-pagination-bullets.swiper-pagination-horizontal {
+
+  .feedback-section .swiper-pagination {
     position: absolute;
     bottom: -48px !important ;
     left: 50% !important;
     transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
   }
   .reviews-buttons {
     position: absolute;
