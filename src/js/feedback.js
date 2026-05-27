@@ -12,8 +12,8 @@ const swiperWrapperEl = document.querySelector(
 initReviewsSection();
 async function initReviewsSection() {
   try {
-    const { feedbacks } = await getFeedbacks();
-    renderMarkup(feedbacks.slice(0, 10));
+    const { feedbacks } = await getFeedbacks(10, 1);
+    renderMarkup(feedbacks);
     initSwiper();
   } catch (error) {
     console.log(error);
