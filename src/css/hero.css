@@ -68,20 +68,18 @@
     color: #080c0c;
     cursor: pointer;
 
-    transition:
-        background-color 250ms ease,
-        border-color 250ms ease,
-        color 250ms ease;
+    transition: all 0.3s ease;
 }
 
 .hero-btn:hover,
 .hero-btn:focus {
-    background-color: #e27f7f;
-    border-color: #e27f7f;
+    border: 2px solid #080c0c;
+    background-color: #f19898;
 }
 
 .hero-btn:active {
-    transform: scale(0.98);
+    background-color: #c07979;
+    
 }
 
 @media screen and (min-width: 768px) {
