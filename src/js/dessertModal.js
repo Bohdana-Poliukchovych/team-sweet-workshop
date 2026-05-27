@@ -126,7 +126,7 @@ function fillModalFields(data) {
       rating: data.rate || 0,
       element: ratingContainer,
       readOnly: true,
-      starGap: 4,
+      starGap: 8,
     });
   }
 
