@@ -59,8 +59,6 @@ function initSwiper() {
       el: '.swiper-pagination',
       type: 'bullets',
       clickable: true,
-      // bulletClass: 'swiper-pagination-bullet-feedback',
-      // bulletActiveClass: 'swiper-pagination-bullet-active-feedback',
       dynamicBullets: true,
     },
     mousewheel: true,
