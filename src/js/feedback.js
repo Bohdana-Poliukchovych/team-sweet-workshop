@@ -6,23 +6,49 @@ import raterFunction from 'rater-js';
 import iziToast from 'izitoast';
 
 import { getFeedbacks } from './services/api.js';
+
+let currentPage = 1;
+let swiper;
+const limit = 10;
+let isLoading = false;
+let isLastPage = false;
+
 const swiperWrapperEl = document.querySelector(
   '.reviews-swiper .swiper-wrapper'
 );
 initReviewsSection();
 async function initReviewsSection() {
+  await loadReviews();
+  swiper = initSwiper();
+  swiper.on('reachEnd', async () => {
+    await loadReviews();
+  });
+}
+
+async function loadReviews() {
+  if (isLoading || isLastPage) return;
+  isLoading = true;
   try {
-    const { feedbacks } = await getFeedbacks();
-    renderMarkup(feedbacks.slice(0, 10));
-    initSwiper();
+    const { feedbacks, total } = await getFeedbacks(limit, currentPage);
+    renderMarkup(feedbacks);
+    if (swiper) {
+      swiper.update();
+    }
+    const totalPages = Math.ceil(total / limit);
+    if (currentPage >= totalPages) {
+      isLastPage = true;
+      swiper.off('reachend');
+    }
+    currentPage++;
   } catch (error) {
-    console.log(error);
     iziToast.error({
       title: 'Помилка',
       message: 'Сталася помилка',
       position: 'topRight',
       timeout: 5000,
     });
+  } finally {
+    isLoading = false;
   }
 }
 function renderMarkup(reviews) {
@@ -37,11 +63,11 @@ function renderMarkup(reviews) {
     </div> `
     )
     .join('');
-  swiperWrapperEl.innerHTML = markup;
+  swiperWrapperEl.insertAdjacentHTML('beforeend', markup);
   initRating();
 }
 function initSwiper() {
-  const swiper = new Swiper('.reviews-swiper', {
+  return new Swiper('.reviews-swiper', {
     modules: [Navigation, Pagination],
     slidesPerView: 1,
     breakpoints: {
@@ -59,8 +85,6 @@ function initSwiper() {
       el: '.swiper-pagination',
       type: 'bullets',
       clickable: true,
-      // bulletClass: 'swiper-pagination-bullet-feedback',
-      // bulletActiveClass: 'swiper-pagination-bullet-active-feedback',
       dynamicBullets: true,
     },
     mousewheel: true,
@@ -68,7 +92,7 @@ function initSwiper() {
   });
 }
 function initRating() {
-  const ratings = document.querySelectorAll('.raterJS');
+  const ratings = document.querySelectorAll('.raterJS:not(.rater-initialized');
   ratings.forEach(el => {
     raterFunction({
       element: el,
@@ -77,5 +101,6 @@ function initRating() {
       starSize: 20,
       step: 0.5,
     });
+    el.classList.add('rater-initialized');
   });
 }
