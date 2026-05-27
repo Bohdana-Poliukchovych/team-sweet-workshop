@@ -49,15 +49,11 @@
 }
 
 .dessert-category-dropdown {
-  /*appearance: none;*/
-  /*-webkit-appearance: none;*/
-  /*-moz-appearance: none;*/
   border: 2px solid #202424;
   border-radius: 6px;
   padding: 8px 12px;
   max-width: 335px;
   width: 100%;
-  /*height: 44px;*/
   background-color: transparent;
   color: #202424;
   font-size: 16px;
@@ -68,11 +64,6 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-
-  /*transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    background-color 0.25s ease;*/
 }
 
 .dessert-select-icon {
@@ -106,9 +97,6 @@
   border-radius: 6px;
   background-color: #ebfcfb;
   padding: 8px 0;
-  /*margin: 0;*/
-  /*list-style: none;*/
-  /*min-height: 368px;*/
   scrollbar-color: #603c3c;
   padding-right: 12px;
 }
@@ -128,7 +116,6 @@
   text-underline-offset: 4px;
 }
 .dessert-category-dropdown-list::-webkit-scrollbar-track {
-  /*background: transparent;*/
   border-radius: 8px;
   margin: 12px 18px;
 }
@@ -145,9 +132,7 @@
   background-color: #603c3c;
   border-radius: 8px;
   width: 8px;
-  /*min-height: 24;*/
   border: 4px solid transparent;
-  /*background-clip: content-box;*/
 }
 
 .dessert-category-fieldset {
@@ -170,7 +155,6 @@
   padding: 16px;
   border: 1px solid #080c0c;
   border-radius: 16px;
-  /*background-color: #f5fdfd;*/
 }
 .dessert-card-img {
   width: 100%;
@@ -211,7 +195,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /*flex-shrink: 0;*/
   width: 44px;
   height: 44px;
   padding: 10px;
@@ -305,6 +288,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
   .dessert-category-input {
     position: absolute;
