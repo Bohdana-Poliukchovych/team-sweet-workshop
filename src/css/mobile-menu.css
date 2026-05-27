@@ -10,6 +10,7 @@
   transform: translateX(100%);
   transition: 300ms ease-in;
   transition-property: transform;
+  z-index: 999;
 }
 .mobile-menu-container {
   min-width: 320px;
