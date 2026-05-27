@@ -234,7 +234,7 @@
 .dessert-load-more:hover,
 .dessert-load-more:focus {
   background-color: transparent;
-  border: 2px solid #080c0c;
+  border-color: #080c0c;
 }
 .dessert-load-more:active {
   background-color: #c07979;
