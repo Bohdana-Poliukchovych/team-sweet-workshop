@@ -58,14 +58,15 @@
   transition-property: stroke;
   width: 48px;
   height: 48px;
-  transition: 50ms ease-in;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: all 0.4s ease;
 }
 .mobile-menu-close-btn:hover,
 .mobile-menu-close-btn:focus {
   outline: none;
-  border: 2px solid #080c0c;
+  border-color: #080c0c;
   background-color: #f19898;
-  border-radius: 100%;
 }
 .mobile-menu-close-btn:active {
   background: #c07979;
@@ -88,6 +89,7 @@
   padding: 12px 0px;
   max-width: 335px;
   height: 48px;
+  transition: all 0.4s ease;
 }
 .mobile-menu-link:hover,
 .mobile-menu-link:focus {
@@ -116,6 +118,7 @@
   font-weight: 500;
   color: #080c0c;
   margin: 0 auto;
+  transition: all 0.2s ease;
 }
 .mobile-menu-shopping-btn:hover,
 .mobile-menu-shopping-btn:focus {
