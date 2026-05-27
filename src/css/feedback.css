@@ -85,6 +85,7 @@
 .reviews-buttons {
   display: flex;
   gap: 16px;
+  margin-left: auto;
 }
 .reviews-next:hover,
 .reviews-next:focus,
@@ -106,26 +107,39 @@
   opacity: 0.2;
 }
 
-.feedback-section .swiper-pagination-fraction,
-.feedback-section .swiper-pagination-custom,
-.feedback-section .swiper-horizontal > .swiper-pagination-bullets,
-.feedback-section .swiper-pagination-bullets.swiper-pagination-horizontal {
-  position: static;
-  display: flex;
-  gap: 9px;
+.feedback-section .swiper-pagination {
+  position: relative;
+  left: 25% !important;
+  bottom: -1px !important;
+  transform: translateX(-50%);
 }
 .feedback-section .swiper-pagination-bullet {
-  background-color: #080c0c;
+  width: 8px;
+  height: 8px;
+  margin: 0 !important;
+  background-color: #9f9f9f;
+  opacity: 1;
+  border-radius: 50%;
+  display: inline-block;
   transition: tranform 250ms ease;
 }
 .feedback-section .swiper-pagination-bullet:hover {
-  transform: scale(1.15);
+  transform: scale(1.15) !important;
 }
-.feedback-section .swiper-horizontal > .swiper-pagination-bullets,
-.feedback-section
-  .swiper-pagination-horizontal.swiper-pagination-bullets
-  .swiper-pagination-bullet-active {
+.feedback-section .swiper-pagination-bullet-active-prev,
+.feedback-section .swiper-pagination-bullet-active-next,
+.feedback-section .swiper-pagination-bullet-active-prev-prev,
+.feedback-section .swiper-pagination-bullet-active-next-next {
+  transform: scale(1) !important;
+}
+.feedback-section .swiper-pagination-bullet-active {
   background-color: #080c0c;
+}
+.feedback-section .swiper-pagination-horizontal .swiper-pagination-bullet {
+  margin: 0 9px !important;
+}
+.feedback-section .swiper-pagination-vertical .swiper-pagination-bullet {
+  margin: 0 9px !important;
 }
 .raterJS {
   margin-bottom: 24px;
@@ -157,18 +171,12 @@
   .feedback-section .swiper .swiper-slide {
     width: 218px;
   }
-  .feedback-section .swiper-pagination-fraction,
-  .feedback-section .swiper-pagination-custom,
-  .feedback-section .swiper-horizontal > .swiper-pagination-bullets,
-  .feedback-section .swiper-pagination-bullets.swiper-pagination-horizontal {
+
+  .feedback-section .swiper-pagination {
     position: absolute;
     bottom: -48px !important ;
     left: 50% !important;
     transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
   }
   .reviews-buttons {
     position: absolute;
