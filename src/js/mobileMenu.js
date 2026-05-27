@@ -22,8 +22,10 @@ function toggleMenu(event) {
     domSelectors.mobileMenuBody.classList.remove('no-scroll');
     return;
   }
-  domSelectors.mobileMenu.classList.toggle('is-open');
-  domSelectors.mobileMenuBody.classList.toggle('no-scroll');
+  if (event.type === 'click') {
+    domSelectors.mobileMenu.classList.toggle('is-open');
+    domSelectors.mobileMenuBody.classList.toggle('no-scroll');
+  }
 }
 
 domSelectors.linkMobileMenu.forEach(link => {
