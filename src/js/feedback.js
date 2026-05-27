@@ -3,12 +3,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
 import raterFunction from 'rater-js';
+import iziToast from 'izitoast';
 
 import { getFeedbacks } from './services/api.js';
 const swiperWrapperEl = document.querySelector(
   '.reviews-swiper .swiper-wrapper'
 );
-// document.addEventListener('DOMContentLoaded', initReviewsSection);
 initReviewsSection();
 async function initReviewsSection() {
   try {
@@ -17,6 +17,12 @@ async function initReviewsSection() {
     initSwiper();
   } catch (error) {
     console.log(error);
+    iziToast.error({
+      title: 'Помилка',
+      message: 'Сталася помилка',
+      position: 'topRight',
+      timeout: 5000,
+    });
   }
 }
 function renderMarkup(reviews) {
@@ -53,6 +59,9 @@ function initSwiper() {
       el: '.swiper-pagination',
       type: 'bullets',
       clickable: true,
+      // bulletClass: 'swiper-pagination-bullet-feedback',
+      // bulletActiveClass: 'swiper-pagination-bullet-active-feedback',
+      dynamicBullets: true,
     },
     mousewheel: true,
     keyboard: true,
