@@ -50,10 +50,16 @@
 ```bash
 src/
 ├── css/
+├── img/
 ├── js/
-├── images/
 ├── partials/
-└── fonts/
+└── public/
+
+index.html
+main.js
+vite.config.js
+package.json
+README.md
 ```
 
 ---
@@ -92,6 +98,8 @@ npm run preview
 
 - Git
 - GitHub
+- VS Code
+- Figma
 - Pull Requests
 - Branch protection rules
 - Code review
