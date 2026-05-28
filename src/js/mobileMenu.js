@@ -8,11 +8,13 @@ const domSelectors = {
   mobileMenuBody: document.querySelector('body'),
 };
 domSelectors.logoMobileMenu.addEventListener('click', closeMenu);
-domSelectors.btnShoppingMobileMenu.addEventListener('click', closeMenu);
 domSelectors.openMobileMenu.addEventListener('click', toggleMenu);
 domSelectors.closeMobileMenu.addEventListener('click', toggleMenu);
 document.addEventListener('keydown', toggleMenu);
-
+domSelectors.btnShoppingMobileMenu.addEventListener('click', () => {
+  closeMenu();
+  window.location.href = '#dessert-list';
+});
 function toggleMenu(event) {
   if (
     domSelectors.mobileMenu.classList.contains('is-open') &&
