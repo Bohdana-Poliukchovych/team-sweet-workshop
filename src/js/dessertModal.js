@@ -122,11 +122,10 @@ function fillModalFields(data) {
     ratingContainer.innerHTML = '';
 
     raterJs({
-      starSize: 20,
+      starSize: 24,
       rating: data.rate || 0,
       element: ratingContainer,
       readOnly: true,
-      starGap: 8,
     });
   }
 
