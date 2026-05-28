@@ -48,18 +48,26 @@
 ## Структура проєкту
 
 ```bash
-src/
-├── css/
-├── img/
-├── js/
-├── partials/
-└── public/
-
-index.html
-main.js
-vite.config.js
-package.json
-README.md
+team-sweet-workshop/
+├── .github/
+├── dist/
+├── node_modules/
+├── src/
+│   ├── css/
+│   ├── img/
+│   ├── js/
+│   ├── partials/
+│   └── public/
+│       └── favicon.svg
+├── index.html
+├── main.js
+├── .editorconfig
+├── .gitignore
+├── .prettierrc.json
+├── package-lock.json
+├── package.json
+├── README.md
+└── vite.config.js
 ```
 
 ---
