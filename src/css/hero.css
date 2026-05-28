@@ -1,127 +1,146 @@
 .hero {
-    padding-bottom: 80px;
+  padding-bottom: 80px;
 }
 
 .hero-wrapper {
-    max-width: 335px;
-    min-height: 582px;
-    margin: 0 auto;
-    padding: 155px 20px;
+  max-width: 375px;
 
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)),
-        image-set(url('../img/hero/pie-mobile.jpg') 1x,
-            url('../img/hero/pie-mobile@2x.jpg') 2x);
+  margin: 0 auto;
+  padding: 155px 20px;
 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    image-set(
+      url('../img/hero/pie-mobile.jpg') 1x,
+      url('../img/hero/pie-mobile@2x.jpg') 2x
+    );
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .hero-title {
-    max-width: 335px;
-    margin-bottom: 20px;
+  max-width: 335px;
+  margin: 0 auto 24px;
 
-    font-family: 'Comfortaa', sans-serif;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    text-align: center;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
 
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .hero-text {
-    margin-bottom: 24px;
+  max-width: 335px;
+  margin: 0 auto 32px;
 
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.5;
-    text-align: center;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
 
-    color: #ffffff;
+  color: #ffffff;
 }
 
-.hero-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.hero-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    width: 100%;
-    min-height: 44px;
-    padding: 10px 24px;
+  max-width: 335px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px;
 
-    border: 1px solid #f19898;
-    border-radius: 100px;
-    background-color: #f19898;
+  border: 2px solid #f19898;
+  border-radius: 100px;
+  background-color: #f19898;
 
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.5;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
 
-    color: #080c0c;
+  color: #080c0c;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover,
+.hero-btn:focus {
+  border: 2px solid #080c0c;
+  background-color: #f5fdfd;
+}
+
+.hero-btn:active {
+  background-color: #c07979;
 }
 
 @media screen and (min-width: 768px) {
-    .hero {
-        padding-bottom: 100px;
-    }
+  .hero {
+    padding-bottom: 100px;
+  }
 
-    .hero-wrapper {
-        max-width: 704px;
-        min-height: 642px;
-        padding: 180px 40px;
+  .hero-wrapper {
+    max-width: 768px;
 
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5),
-                rgba(0, 0, 0, 0.5)),
-            image-set(url('../img/hero/pie-tablet.jpg') 1x,
-                url('../img/hero/pie-tablet@2x.jpg') 2x);
-    }
+    padding: 325px 32px;
 
-    .hero-title {
-        max-width: 704px;
-        margin: 0 auto 24px;
-        font-size: 56px;
-    }
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      image-set(
+        url('../img/hero/pie-tablet.jpg') 1x,
+        url('../img/hero/pie-tablet@2x.jpg') 2x
+      );
+  }
 
-    .hero-text {
-        max-width: 704px;
-        margin: 0 auto 32px;
-        font-size: 18px;
-    }
+  .hero-title {
+    max-width: 704px;
+  }
 
-    .hero-link {
-        max-width: 250px;
-        margin: 0 auto;
-    }
+  .hero-text {
+    max-width: 704px;
+    margin: 0 auto 32px;
+  }
+
+  .hero-btn {
+    width: 219px;
+    margin: 0 auto;
+
+    padding: 10px 24px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .hero {
-        padding-bottom: 120px;
-    }
+  .hero {
+    padding-bottom: 120px;
+  }
 
-    .hero-wrapper {
-        max-width: 1312px;
-        min-height: 735px;
-        padding: 220px 64px;
+  .hero-wrapper {
+    max-width: 1440px;
 
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5),
-                rgba(0, 0, 0, 0.5)),
-            image-set(url('../img/hero/pie-desktop.jpg') 1x,
-                url('../img/hero/pie-desktop@2x.jpg') 2x);
-    }
+    padding: 306px 64px;
 
-    .hero-title {
-        max-width: 768px;
-        font-size: 56px;
-    }
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      image-set(
+        url('../img/hero/pie-desktop.jpg') 1x,
+        url('../img/hero/pie-desktop@2x.jpg') 2x
+      );
+  }
 
-    .hero-text {
-        max-width: 768px;
-        font-size: 20px;
-    }
+  .hero-title {
+    max-width: 768px;
+    font-size: 56px;
+  }
+
+  .hero-text {
+    max-width: 768px;
+  }
 }

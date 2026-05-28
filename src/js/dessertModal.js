@@ -1,4 +1,5 @@
 import { getDessertById } from './services/api.js';
+import raterJs from 'rater-js';
 
 import axios from 'axios';
 import iziToast from 'izitoast';
@@ -12,6 +13,7 @@ const orderButton = modalOverlay?.querySelector('.OrderButton');
 
 let currentProductId = null;
 let originalButtonText = '';
+let raterInstance = null;
 
 /**
  *@param {string|number|Object} target
@@ -117,19 +119,14 @@ function fillModalFields(data) {
 
   const ratingContainer = modalOverlay.querySelector('#productRatingContainer');
   if (ratingContainer) {
-    const rate = data.rate || 0;
-    let starsHtml = '';
+    ratingContainer.innerHTML = '';
 
-    for (let i = 1; i <= 5; i++) {
-      let state = '';
-      if (i <= Math.floor(rate)) {
-        state = 'is-active full';
-      } else if (i <= Math.ceil(rate)) {
-        state = 'is-active half';
-      }
-      starsHtml += `<span class="star-item ${state}">★</span>`;
-    }
-    ratingContainer.innerHTML = `<div class="stars-wrapper">${starsHtml}</div>`;
+    raterJs({
+      starSize: 24,
+      rating: data.rate || 0,
+      element: ratingContainer,
+      readOnly: true,
+    });
   }
 
   const imgElement = modalOverlay.querySelector('.ProductImage');
@@ -140,6 +137,7 @@ function fillModalFields(data) {
 
   modalOverlay.querySelector('.ProductDescription').textContent =
     data.description || '';
+
   const ingredientsBlock = modalOverlay.querySelector('.ProductIngredients');
   if (ingredientsBlock) {
     ingredientsBlock.innerHTML = `<strong>Склад:</strong> ${data.composition || 'Інформація відсутня'}`;

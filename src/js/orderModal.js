@@ -61,6 +61,19 @@ function validateComment() {
   }
 }
 
+function normalizePhoneForApi(rawPhone) {
+  const compact = String(rawPhone || '')
+    .trim()
+    .replace(/[\s()\-]/g, '');
+  const digits = compact.startsWith('+') ? compact.slice(1) : compact;
+
+  if (/^0\d{9}$/.test(digits)) {
+    return `38${digits}`;
+  }
+
+  return digits;
+}
+
 closeBtn?.addEventListener('click', closeOrderModal);
 
 backdrop?.addEventListener('click', event => {
@@ -116,7 +129,7 @@ form?.addEventListener('submit', async event => {
   const { name, phone, comment } = form.elements;
   const payload = {
     name: name.value.trim(),
-    phone: phone.value.trim(),
+    phone: normalizePhoneForApi(phone.value),
     comment: comment.value.trim(),
     dessertId,
   };

@@ -107,7 +107,14 @@
   }
 }
 .footer-menu-link {
+  display: block;
   border-bottom: 1px solid transparent;
+  height: 27px;
+}
+@media only screen and (min-width: 1440px) {
+  .footer-menu-link {
+    height: 21px;
+  }
 }
 .footer-menu-link:hover,
 .footer-menu-link:focus {
